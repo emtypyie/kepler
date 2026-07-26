@@ -23,12 +23,22 @@
 
     <div class="dl-hero">
       <div class="dl-card">
-        <div class="dl-version" id="dlVersion">v2.0.0</div>
-        <a class="btn btn-primary btn-dl" id="dlBtn" href="https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Latest
-        </a>
-        <p class="dl-meta">Portable · 27 KB · Windows / Linux / macOS</p>
+        <div class="dl-version">v2.0.0</div>
+        <div class="dl-downloads">
+          <a class="btn btn-primary btn-dl" id="dlWin" href="https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-x64.exe">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            .exe
+          </a>
+          <a class="btn btn-primary btn-dl" id="dlLin" href="https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-x64.AppImage">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            .AppImage
+          </a>
+          <a class="btn btn-primary btn-dl" id="dlMac" href="https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-macos-x64">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            macOS
+          </a>
+        </div>
+        <p class="dl-meta">Standalone executables — no Node.js required. Just download and run.</p>
       </div>
     </div>
 
@@ -59,41 +69,43 @@
 
     <section class="dl-section">
       <h2>Manual Setup</h2>
+      <p class="dl-note">Or build from source if you prefer:</p>
       <div class="dl-grid">
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Windows</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -L -o kepler-backend.zip ^
-  https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
-powershell Expand-Archive kepler-backend.zip -DestinationPath .
-cd kepler-backend
-npm install
-node server.js">Copy</button>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-x64.exe
+kepler-backend-v2.0.0-x64.exe">Copy</button>
           </div>
           <div class="code-block">
-            <pre>curl -L -o kepler-backend.zip ^
-  https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
-powershell Expand-Archive kepler-backend.zip -DestinationPath .
-cd kepler-backend
-npm install
-node server.js</pre>
+            <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-x64.exe
+kepler-backend-v2.0.0-x64.exe</pre>
           </div>
         </div>
         <div class="dl-panel">
           <div class="dl-panel-header">
-            <span class="dl-os">Linux / macOS</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
-unzip kepler-backend-v2.0.0.zip
-cd kepler-backend
-npm install
-node server.js">Copy</button>
+            <span class="dl-os">Linux</span>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-x64.AppImage
+chmod +x kepler-backend-v2.0.0-x64.AppImage
+./kepler-backend-v2.0.0-x64.AppImage">Copy</button>
           </div>
           <div class="code-block">
-            <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
-unzip kepler-backend-v2.0.0.zip
-cd kepler-backend
-npm install
-node server.js</pre>
+            <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-x64.AppImage
+chmod +x kepler-backend-v2.0.0-x64.AppImage
+./kepler-backend-v2.0.0-x64.AppImage</pre>
+          </div>
+        </div>
+        <div class="dl-panel">
+          <div class="dl-panel-header">
+            <span class="dl-os">macOS</span>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-macos-x64
+chmod +x kepler-backend-v2.0.0-macos-x64
+./kepler-backend-v2.0.0-macos-x64">Copy</button>
+          </div>
+          <div class="code-block">
+            <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-macos-x64
+chmod +x kepler-backend-v2.0.0-macos-x64
+./kepler-backend-v2.0.0-macos-x64</pre>
           </div>
         </div>
       </div>
@@ -101,46 +113,47 @@ node server.js</pre>
 
     <section class="dl-section">
       <h2>Auto-Start</h2>
-      <p class="dl-note">If using Docker, it restarts automatically. For direct installs, use these:</p>
+      <p class="dl-note">Make Kepler launch on boot. Docker handles this automatically.</p>
       <div class="dl-grid">
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Windows</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="powershell -ExecutionPolicy Bypass -File &quot;$env:USERPROFILE\.kepler\backend\setup\windows.ps1&quot;">Copy</button>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name Kepler -Value 'C:\path\to\kepler-backend-v2.0.0-x64.exe'">Copy</button>
           </div>
           <div class="code-block">
-            <pre>powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\.kepler\backend\setup\windows.ps1"</pre>
+            <pre>New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name Kepler -Value 'C:\path\to\kepler-backend.exe'</pre>
           </div>
         </div>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Linux</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="sudo ~/.kepler/backend/setup/linux.sh">Copy</button>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="cat > ~/.config/autostart/kepler.desktop << EOF
+[Desktop Entry]
+Type=Application
+Name=Kepler Backend
+Exec=/home/user/kepler-backend-x64.AppImage
+EOF">Copy</button>
           </div>
           <div class="code-block">
-            <pre>sudo ~/.kepler/backend/setup/linux.sh</pre>
-          </div>
-        </div>
-        <div class="dl-panel">
-          <div class="dl-panel-header">
-            <span class="dl-os">macOS</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="~/.kepler/backend/setup/macos.sh">Copy</button>
-          </div>
-          <div class="code-block">
-            <pre>~/.kepler/backend/setup/macos.sh</pre>
+            <pre>cat > ~/.config/autostart/kepler.desktop << 'EOF'
+[Desktop Entry]
+Type=Application
+Name=Kepler Backend
+Exec=/path/to/kepler-backend-x64.AppImage
+EOF</pre>
           </div>
         </div>
       </div>
     </section>
 
     <section class="dl-section">
-      <h2>Verify Installation</h2>
-      <p class="dl-note">Once the server is running, confirm it works:</p>
-      <div class="code-block code-block--wide">
+      <h2>Verify</h2>
+      <p class="dl-note">Once running, confirm it works:</p>
+      <div class="code-block">
         <pre>curl http://localhost:41783/api/health</pre>
         <button class="code-copy code-copy--inset" onclick="copyCode(this)" data-copy="curl http://localhost:41783/api/health">Copy</button>
       </div>
-      <div class="code-block code-block--wide code-block--out">
+      <div class="code-block code-block--out">
         <pre>{"status":"ok","version":"2.0.0","port":41783,"services":["ediary","pyieos"]}</pre>
         <button class="code-copy code-copy--inset" onclick="copyCode(this)" data-copy="{&quot;status&quot;:&quot;ok&quot;,&quot;version&quot;:&quot;2.0.0&quot;,&quot;port&quot;:41783,&quot;services&quot;:[&quot;ediary&quot;,&quot;pyieos&quot;]}">Copy</button>
       </div>
@@ -171,19 +184,17 @@ node server.js</pre>
       .then(r => r.json())
       .then(data => {
         const ver = data.tag_name || 'v2.0.0';
-        document.getElementById('dlVersion').textContent = ver;
-        const asset = data.assets && data.assets.find(a => a.name.includes('kepler-backend'));
-        if (asset) document.getElementById('dlBtn').href = asset.browser_download_url;
-        document.querySelectorAll('.code-block pre').forEach(pre => {
-          pre.innerHTML = pre.innerHTML.replace(/kepler-backend-v[\d.]+\.zip/g, () => {
-            return asset ? asset.name : 'kepler-backend-v2.0.0.zip';
-          });
+        const verNum = ver.replace(/^v/, '');
+        document.querySelector('.dl-version').textContent = ver;
+        for (const btn of ['dlWin', 'dlLin', 'dlMac']) {
+          const el = document.getElementById(btn);
+          if (el) el.href = el.href.replace(/v[\d.]+(?=\-)/, verNum);
+        }
+        document.querySelectorAll('[data-copy]').forEach(el => {
+          el.setAttribute('data-copy', el.getAttribute('data-copy').replace(/v[\d.]+(?=\-)/g, verNum));
         });
-        document.querySelectorAll('[data-copy]').forEach(btn => {
-          const text = btn.getAttribute('data-copy');
-          btn.setAttribute('data-copy', text.replace(/kepler-backend-v[\d.]+\.zip/g, () => {
-            return asset ? asset.name : 'kepler-backend-v2.0.0.zip';
-          }));
+        document.querySelectorAll('.code-block pre').forEach(pre => {
+          pre.textContent = pre.textContent.replace(/v[\d.]+(?=\-)/g, verNum);
         });
       })
       .catch(() => {});

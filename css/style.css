@@ -250,7 +250,8 @@ textarea { font-family: 'SFMono-Regular', Consolas, monospace; resize: vertical;
 .dl-hero { text-align: center; margin-bottom: 3rem; }
 .dl-card { display: inline-block; background: rgba(40,40,40,0.7); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2rem 3rem; }
 .dl-version { color: rgba(255,255,255,0.15); font-size: 0.8rem; font-family: 'Courier New', monospace; margin-bottom: 1rem; }
-.btn-dl { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 2rem; font-size: 1rem; }
+.dl-downloads { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.btn-dl { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-size: 0.95rem; min-width: 120px; justify-content: center; }
 .dl-meta { color: #666; font-size: 0.8rem; margin-top: 0.8rem; }
 
 .dl-section { margin-bottom: 2.5rem; }

@@ -6,70 +6,33 @@ $ErrorActionPreference = "Stop"
 $RepoRoot = Split-Path -Parent $PSCommandPath
 $BackendDir = Join-Path $RepoRoot "backend"
 $DistDir = Join-Path $RepoRoot "dist"
-$ReleaseDir = Join-Path $DistDir "kepler-backend-v$Version"
-
-Write-Host "Building Kepler Backend v$Version" -ForegroundColor Cyan
 
 if (Test-Path $DistDir) { Remove-Item -Recurse -Force $DistDir }
-New-Item -ItemType Directory -Path $ReleaseDir -Force | Out-Null
+New-Item -ItemType Directory -Path $DistDir -Force | Out-Null
 
-Copy-Item -Path "$BackendDir\server.js" -Destination $ReleaseDir
-Copy-Item -Path "$BackendDir\package.json" -Destination $ReleaseDir
-Copy-Item -Path "$BackendDir\users.json" -Destination $ReleaseDir -ErrorAction SilentlyContinue
-Copy-Item -Recurse -Path "$BackendDir\core" -Destination $ReleaseDir
-Copy-Item -Recurse -Path "$BackendDir\services" -Destination $ReleaseDir
-Copy-Item -Recurse -Path "$BackendDir\setup" -Destination $ReleaseDir
-Copy-Item -Recurse -Path "$BackendDir\autostart" -Destination $ReleaseDir
-Copy-Item -Path "$RepoRoot\emtypyie.json" -Destination $ReleaseDir
-New-Item -ItemType Directory -Path "$ReleaseDir\notes" -Force | Out-Null
-New-Item -ItemType File -Path "$ReleaseDir\notes\.gitkeep" -Force | Out-Null
+Push-Location $BackendDir
 
-# README
-@"
-Kepler Backend v$Version
+Write-Host "==> Installing build dependencies..." -ForegroundColor Cyan
+npm install --silent
+npm install -g pkg 2>$null
 
-Local service hub — ediary, pyieOS, and more.
+Write-Host "==> Building executables..." -ForegroundColor Cyan
+pkg . --targets node18-win-x64,node18-linux-x64,node18-macos-x64 --out-path $DistDir
 
-Quick Start
------------
-1. Install Node.js v18+
-2. Run:
+Pop-Location
 
-   cd kepler-backend
-   npm install
-   node server.js
+# Rename for clarity
+Rename-Item -Path "$DistDir\kepler-backend-win-x64.exe" -NewName "kepler-backend-v$Version-x64.exe" -ErrorAction SilentlyContinue
+Rename-Item -Path "$DistDir\kepler-backend-linux-x64" -NewName "kepler-backend-v$Version-x64.AppImage" -ErrorAction SilentlyContinue
+Rename-Item -Path "$DistDir\kepler-backend-macos-x64" -NewName "kepler-backend-v$Version-macos-x64" -ErrorAction SilentlyContinue
 
-3. Open https://kepler.emtypyie.in in your browser
-4. Create an account and start using services
-
-Auto-Start
-----------
-See setup/ directory for platform-specific scripts.
-
-API Health Check: GET http://localhost:41783/api/health
-"@ | Out-File -FilePath "$ReleaseDir\README.txt" -Encoding UTF8
-
-@"
-@echo off
-cd /d "%~dp0"
-echo Installing dependencies...
-call npm install
-echo Starting Kepler Backend...
-node server.js
-"@ | Out-File -FilePath "$ReleaseDir\start.bat" -Encoding ASCII
-
-$shScript = @"
-#!/usr/bin/env bash
-cd "`$(dirname "`$0")"
-echo "Installing dependencies..."
-npm install
-echo "Starting Kepler Backend..."
-node server.js
-"@
-$shScript | Out-File -FilePath "$ReleaseDir\start.sh" -Encoding ASCII
-
-$zipFile = Join-Path $DistDir "kepler-backend-v$Version.zip"
-Compress-Archive -Path "$ReleaseDir\*" -DestinationPath $zipFile -Force
-
-Write-Host "Release created: $zipFile" -ForegroundColor Green
-Write-Host "Size: $([math]::Round((Get-Item $zipFile).Length / 1KB)) KB" -ForegroundColor Gray
+Write-Host ""
+Write-Host "============================================"
+Write-Host "  Kepler v$Version built!" -ForegroundColor Green
+Write-Host "============================================"
+Write-Host ""
+Get-ChildItem $DistDir | ForEach-Object {
+  $size = [math]::Round($_.Length / 1MB, 2)
+  Write-Host "  $($_.Name)  ($size MB)" -ForegroundColor Gray
+}
+Write-Host ""

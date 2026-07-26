@@ -114,20 +114,17 @@ app.delete('/api/auth/account', requireAuth, (req, res) => {
   res.json({ ok: true });
 });
 
-const servicesDir = path.join(__dirname, 'services');
-if (fs.existsSync(servicesDir)) {
-  const items = fs.readdirSync(servicesDir);
-  for (const item of items) {
-    const servicePath = path.join(servicesDir, item, 'index.js');
-    if (fs.existsSync(servicePath)) {
-      try {
-        const service = require(servicePath);
-        service.register(app);
-        console.log(`  Loaded service: ${service.name || item}`);
-      } catch (e) {
-        console.error(`  Failed to load service ${item}:`, e.message);
-      }
-    }
+const services = [
+  require('./services/ediary/index'),
+  require('./services/pyieos/index'),
+];
+
+for (const service of services) {
+  try {
+    service.register(app);
+    console.log(`  Loaded service: ${service.name || 'unknown'}`);
+  } catch (e) {
+    console.error(`  Failed to load service ${service.name}:`, e.message);
   }
 }
 

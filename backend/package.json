@@ -3,7 +3,16 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "pkg . --targets node18-win-x64,node18-linux-x64,node18-macos-x64 --output dist/kepler-backend",
+    "build:win": "pkg . --targets node18-win-x64 --output dist/kepler-backend.exe",
+    "build:linux": "pkg . --targets node18-linux-x64 --output dist/kepler-backend",
+    "build:mac": "pkg . --targets node18-macos-x64 --output dist/kepler-backend"
+  },
+  "pkg": {
+    "scripts": ["server.js", "core/**/*.js", "services/**/*.js"],
+    "assets": ["services/**/*"],
+    "targets": ["node18-win-x64", "node18-linux-x64", "node18-macos-x64"]
   },
   "dependencies": {
     "express": "^4.18.2",
