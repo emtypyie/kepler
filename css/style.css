@@ -26,7 +26,9 @@ textarea { font-family: 'SFMono-Regular', Consolas, monospace; resize: vertical;
 /* Auth */
 .auth-container { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem; }
 .auth-box { background: rgba(30,30,30,0.92); padding: 2.5rem; border-radius: 10px; width: 100%; max-width: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); backdrop-filter: blur(8px); }
-.auth-box .logo { text-align: center; font-size: 2rem; color: #fff; margin-bottom: 0.3rem; }
+.auth-box .logo { text-align: center; font-size: 2rem; color: #fff; margin-bottom: 0.3rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+.logo-icon, .brand-icon { vertical-align: middle; flex-shrink: 0; }
+.brand { display: inline-flex; align-items: center; gap: 0.4rem; }
 .auth-box .subtitle { text-align: center; color: #888; margin-bottom: 1.5rem; }
 .auth-box h2 { margin-bottom: 1rem; color: #fff; }
 .auth-box input { margin-bottom: 0.8rem; }
