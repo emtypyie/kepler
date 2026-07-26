@@ -16,110 +16,168 @@
   </nav>
 
   <main>
-    <h1 class="page-title">Download Kepler Backend</h1>
-    <p class="subtitle">Run the backend locally to use ediary, pyieOS, and all Kepler services.</p>
+    <header class="dl-header">
+      <h1 class="page-title">Install Kepler Backend</h1>
+      <p class="subtitle">Run the backend locally to use ediary, pyieOS, and all Kepler services.</p>
+    </header>
 
-    <div class="download-hero">
-      <div class="download-card-main">
+    <div class="dl-hero">
+      <div class="dl-card">
         <div class="dl-version" id="dlVersion">v2.0.0</div>
-        <a class="btn btn-lg btn-primary download-btn" id="dlBtn" href="https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <a class="btn btn-primary btn-dl" id="dlBtn" href="https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download Latest
         </a>
-        <p class="dl-sub">Windows · Linux · macOS — 27 KB</p>
+        <p class="dl-meta">Portable · 27 KB · Windows / Linux / macOS</p>
       </div>
     </div>
 
-    <div class="setup-section">
+    <section class="dl-section">
       <h2>One-Liner Install</h2>
-      <div class="setup-tabs">
-        <div class="setup-tab">
-          <h3>Windows (PowerShell)</h3>
-          <pre class="setup-code">curl -fsSL https://kepler.emtypyie.in/curler/ps1 | powershell -c -</pre>
+      <div class="dl-grid">
+        <div class="dl-panel">
+          <div class="dl-panel-header">
+            <span class="dl-os">Windows</span>
+            <span class="dl-shell">powershell</span>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
+            <pre>curl -fsSL https://kepler.emtypyie.in/curler/ps1 | powershell -c -</pre>
+          </div>
         </div>
-        <div class="setup-tab">
-          <h3>Linux / macOS (bash)</h3>
-          <pre class="setup-code">curl -fsSL https://kepler.emtypyie.in/curler | bash</pre>
+        <div class="dl-panel">
+          <div class="dl-panel-header">
+            <span class="dl-os">Linux / macOS</span>
+            <span class="dl-shell">bash</span>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
+            <pre>curl -fsSL https://kepler.emtypyie.in/curler | bash</pre>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="setup-section">
-      <h2>Quick Install (Windows)</h2>
-      <p>Download <code>setup.bat</code> from the repo, double-click, and it handles everything:</p>
-      <pre class="setup-code">curl -L -o setup.bat https://raw.githubusercontent.com/emtypyie/kepler/master/setup.bat
-setup.bat</pre>
-      <p class="setup-note">The installer checks for Node.js, downloads the latest backend, installs deps, and starts the server.</p>
-    </div>
-
-    <div class="setup-section">
+    <section class="dl-section">
       <h2>Manual Setup</h2>
-      <div class="setup-tabs">
-        <div class="setup-tab">
-          <h3>Windows</h3>
-          <pre class="setup-code">curl -L -o kepler-backend.zip ^
+      <div class="dl-grid">
+        <div class="dl-panel">
+          <div class="dl-panel-header">
+            <span class="dl-os">Windows</span>
+            <span class="dl-shell">powershell</span>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
+            <pre>curl -L -o kepler-backend.zip ^
   https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
 powershell Expand-Archive kepler-backend.zip -DestinationPath .
 cd kepler-backend
 npm install
 node server.js</pre>
+          </div>
         </div>
-        <div class="setup-tab">
-          <h3>Linux / macOS</h3>
-          <pre class="setup-code">curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
+        <div class="dl-panel">
+          <div class="dl-panel-header">
+            <span class="dl-os">Linux / macOS</span>
+            <span class="dl-shell">bash</span>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
+            <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
 unzip kepler-backend-v2.0.0.zip
 cd kepler-backend
 npm install
 node server.js</pre>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="setup-section">
-      <h2>Auto-Start (Optional)</h2>
-      <p>Configure Kepler to launch automatically when your system boots.</p>
-      <div class="setup-tabs">
-        <div class="setup-tab">
-          <h3>Windows (PowerShell as Admin)</h3>
-          <pre class="setup-code">powershell -ExecutionPolicy Bypass -File setup\windows.ps1</pre>
-          <h3 style="margin-top:1rem">Linux</h3>
-          <pre class="setup-code">chmod +x setup/linux.sh
-sudo ./setup/linux.sh</pre>
-          <h3 style="margin-top:1rem">macOS</h3>
-          <pre class="setup-code">chmod +x setup/macos.sh
-./setup/macos.sh</pre>
+    <section class="dl-section">
+      <h2>Auto-Start</h2>
+      <p class="dl-note">Configure Kepler to launch automatically when your system boots.</p>
+      <div class="dl-grid">
+        <div class="dl-panel">
+          <div class="dl-panel-header">
+            <span class="dl-os">Windows</span>
+            <span class="dl-shell">powershell (admin)</span>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
+            <pre>powershell -ExecutionPolicy Bypass -File setup\windows.ps1</pre>
+          </div>
+        </div>
+        <div class="dl-panel">
+          <div class="dl-panel-header">
+            <span class="dl-os">Linux</span>
+            <span class="dl-shell">bash</span>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
+            <pre>sudo ./setup/linux.sh</pre>
+          </div>
+        </div>
+        <div class="dl-panel">
+          <div class="dl-panel-header">
+            <span class="dl-os">macOS</span>
+            <span class="dl-shell">bash</span>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
+            <pre>./setup/macos.sh</pre>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="setup-section">
-      <h2>Verify</h2>
-      <p>Once running, check the health endpoint:</p>
-      <pre class="setup-code">curl http://localhost:41783/api/health</pre>
-      <p>Expected:</p>
-      <pre class="setup-code">{"status":"ok","version":"2.0.0","port":41783,"services":["ediary","pyieos"]}</pre>
-    </div>
+    <section class="dl-section">
+      <h2>Verify Installation</h2>
+      <p class="dl-note">Once the server is running, confirm it works:</p>
+      <div class="code-block code-block--wide">
+        <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
+        <pre>curl http://localhost:41783/api/health</pre>
+      </div>
+      <div class="code-block code-block--wide code-block--out">
+        <button class="code-copy" onclick="copyCode(this)" aria-label="Copy output">Copy</button>
+        <pre>{"status":"ok","version":"2.0.0","port":41783,"services":["ediary","pyieos"]}</pre>
+      </div>
+    </section>
 
-    <div class="setup-section">
-      <h2>Services</h2>
-      <table class="service-table">
-        <tr><td>ediary</td><td>Note-taking app with Markdown</td><td>Available</td></tr>
-        <tr><td>pyieOS</td><td>System dashboard &amp; manager</td><td>Soon</td></tr>
+    <section class="dl-section">
+      <h2>Available Services</h2>
+      <table class="dl-table">
+        <tr><td>ediary</td><td>Note-taking app with Markdown</td><td class="tag tag--go">Available</td></tr>
+        <tr><td>pyieOS</td><td>System dashboard &amp; service manager</td><td class="tag tag--soon">Coming Soon</td></tr>
       </table>
-    </div>
+    </section>
   </main>
 
   <script>
-    // Fetch latest version from GitHub
+    function copyCode(btn) {
+      const pre = btn.nextElementSibling;
+      const text = pre.textContent.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 1800);
+      });
+    }
+
     fetch('https://api.github.com/repos/emtypyie/kepler/releases/latest')
       .then(r => r.json())
       .then(data => {
         const ver = data.tag_name || 'v2.0.0';
         document.getElementById('dlVersion').textContent = ver;
         const asset = data.assets && data.assets.find(a => a.name.includes('kepler-backend'));
-        if (asset) {
-          document.getElementById('dlBtn').href = asset.browser_download_url;
-        }
+        if (asset) document.getElementById('dlBtn').href = asset.browser_download_url;
+        document.querySelectorAll('.code-block pre').forEach(pre => {
+          pre.innerHTML = pre.innerHTML.replace(/kepler-backend-v[\d.]+\.zip/g, () => {
+            return asset ? asset.name : 'kepler-backend-v2.0.0.zip';
+          });
+        });
       })
       .catch(() => {});
   </script>
