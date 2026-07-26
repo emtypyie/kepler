@@ -1,8 +1,8 @@
-// Parallax
+// Subtle parallax — bg stays fixed, overlay covers everything
 const bg = document.getElementById('parallaxBg');
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
-  if (bg) bg.style.transform = `translateY(${scrollY * 0.3}px)`;
+  if (bg) bg.style.transform = `translateY(${scrollY * 0.08}px) scale(1.15)`;
 });
 
 // Scroll-triggered animations
