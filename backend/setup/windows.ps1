@@ -14,6 +14,8 @@ if ($Remove) {
 }
 
 $batPath = Join-Path $backendDir "autostart\kepler.bat"
+$batDir = Split-Path $batPath -Parent
+if (-not (Test-Path $batDir)) { New-Item -ItemType Directory -Path $batDir -Force | Out-Null }
 @"
 @echo off
 cd /d "$backendDir"
