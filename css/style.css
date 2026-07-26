@@ -5,7 +5,19 @@ a:hover { text-decoration: underline; }
 
 nav { background: rgba(30,30,30,0.92); color: #fff; padding: 0.75rem 2rem; display: flex; align-items: center; gap: 1rem; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px); }
 nav .brand { font-size: 1.1rem; font-weight: 700; color: #fff; text-decoration: none; }
-nav .nav-user { margin-left: auto; color: #aaa; font-size: 0.9rem; }
+nav > span:not(.brand) { margin-right: auto; }
+
+.user-menu { position: relative; display: flex; align-items: center; }
+.avatar { width: 34px; height: 34px; border-radius: 50%; background: #4a90d9; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.95rem; cursor: pointer; user-select: none; transition: opacity 0.2s; }
+.avatar:hover { opacity: 0.85; }
+.dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: rgba(40,40,40,0.96); border: 1px solid #444; border-radius: 8px; min-width: 180px; display: none; z-index: 100; box-shadow: 0 4px 16px rgba(0,0,0,0.4); backdrop-filter: blur(8px); padding: 0.35rem 0; }
+.dropdown.open { display: block; }
+.dropdown-header { padding: 0.6rem 1rem; color: #fff; font-weight: 600; font-size: 0.9rem; border-bottom: 1px solid #444; margin-bottom: 0.25rem; }
+.dropdown-item { display: block; padding: 0.5rem 1rem; color: #ccc; text-decoration: none; font-size: 0.9rem; cursor: pointer; transition: background 0.15s; }
+.dropdown-item:hover { background: rgba(255,255,255,0.08); color: #fff; text-decoration: none; }
+.dropdown-item.danger { color: #f44336; }
+.dropdown-item.danger:hover { background: rgba(244,67,54,0.12); color: #ff6b6b; }
+.dropdown-divider { height: 1px; background: #444; margin: 0.25rem 0; }
 
 main { max-width: 900px; margin: 0 auto; padding: 2rem; }
 

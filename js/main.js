@@ -1,15 +1,12 @@
 auth.redirect();
 
 if (window.location.pathname === '/dashboard') {
-  const user = auth.getUser();
-  if (user) document.getElementById('navUser').textContent = user.username;
   checkBackend();
 }
 
 if (window.location.pathname === '/settings') {
-  const user = auth.getUser();
-  if (user) {
-    document.getElementById('settingsUser').textContent = user.username;
+  if (auth.getUser()) {
+    document.getElementById('settingsUser').textContent = auth.getUser().username;
     document.getElementById('backendUrl').value = getBackendUrl();
   }
   checkBackend();

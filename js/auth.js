@@ -131,3 +131,24 @@ const auth = {
 function getBackendUrl() {
   return localStorage.getItem('backendUrl') || 'http://localhost:41783';
 }
+
+function toggleMenu() {
+  document.getElementById('userDropdown')?.classList.toggle('open');
+}
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.user-menu')) {
+    document.getElementById('userDropdown')?.classList.remove('open');
+  }
+});
+
+function setUserUI() {
+  const user = auth.getUser();
+  if (!user) return;
+  const avatar = document.getElementById('userAvatar');
+  const dropdownUser = document.getElementById('dropdownUser');
+  if (avatar) avatar.textContent = user.username.charAt(0).toUpperCase();
+  if (dropdownUser) dropdownUser.textContent = user.username;
+}
+
+document.addEventListener('DOMContentLoaded', setUserUI);
