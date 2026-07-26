@@ -44,7 +44,7 @@
 
     <section class="dl-section">
       <h2>One-Click Install</h2>
-      <p class="dl-note">Auto-detects Docker (preferred) or falls back to direct Node.js install.</p>
+      <p class="dl-note">Installs Kepler as a background service — runs on startup, no terminal needed.</p>
       <div class="dl-grid">
         <div class="dl-panel">
           <div class="dl-panel-header">
@@ -68,79 +68,78 @@
     </section>
 
     <section class="dl-section">
-      <h2>Manual Setup</h2>
-      <p class="dl-note">Or build from source if you prefer:</p>
+      <h2>Manual Download</h2>
+      <p class="dl-note">Download the standalone executable directly:</p>
       <div class="dl-grid">
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Windows</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-x64.exe
-kepler-backend-v2.0.0-x64.exe">Copy</button>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.5-x64.exe
+kepler-backend-v2.0.5-x64.exe">Copy</button>
           </div>
           <div class="code-block">
-            <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-x64.exe
-kepler-backend-v2.0.0-x64.exe</pre>
+            <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.5-x64.exe
+kepler-backend-v2.0.5-x64.exe</pre>
           </div>
         </div>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Linux</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-x64.AppImage
-chmod +x kepler-backend-v2.0.0-x64.AppImage
-./kepler-backend-v2.0.0-x64.AppImage">Copy</button>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.5-x64.AppImage
+chmod +x kepler-backend-v2.0.5-x64.AppImage
+./kepler-backend-v2.0.5-x64.AppImage">Copy</button>
           </div>
           <div class="code-block">
-            <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-x64.AppImage
-chmod +x kepler-backend-v2.0.0-x64.AppImage
-./kepler-backend-v2.0.0-x64.AppImage</pre>
+            <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.5-x64.AppImage
+chmod +x kepler-backend-v2.0.5-x64.AppImage
+./kepler-backend-v2.0.5-x64.AppImage</pre>
           </div>
         </div>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">macOS</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-macos-x64
-chmod +x kepler-backend-v2.0.0-macos-x64
-./kepler-backend-v2.0.0-macos-x64">Copy</button>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.5-macos-x64
+chmod +x kepler-backend-v2.0.5-macos-x64
+./kepler-backend-v2.0.5-macos-x64">Copy</button>
           </div>
           <div class="code-block">
-            <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0-macos-x64
-chmod +x kepler-backend-v2.0.0-macos-x64
-./kepler-backend-v2.0.0-macos-x64</pre>
+            <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.5-macos-x64
+chmod +x kepler-backend-v2.0.5-macos-x64
+./kepler-backend-v2.0.5-macos-x64</pre>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="dl-section">
+<section class="dl-section">
       <h2>Auto-Start</h2>
-      <p class="dl-note">Make Kepler launch on boot. Docker handles this automatically.</p>
+      <p class="dl-note">The one-click installer above sets up auto-start automatically. Manual steps if needed:</p>
       <div class="dl-grid">
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Windows</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name Kepler -Value 'C:\path\to\kepler-backend-v2.0.0-x64.exe'">Copy</button>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\.kepler\backend\setup\windows.ps1\"">Copy</button>
           </div>
           <div class="code-block">
-            <pre>New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name Kepler -Value 'C:\path\to\kepler-backend.exe'</pre>
+            <pre>powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\.kepler\backend\setup\windows.ps1"</pre>
           </div>
         </div>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Linux</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="cat > ~/.config/autostart/kepler.desktop << EOF
-[Desktop Entry]
-Type=Application
-Name=Kepler Backend
-Exec=/home/user/kepler-backend-x64.AppImage
-EOF">Copy</button>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="systemctl --user enable --now kepler">Copy</button>
           </div>
           <div class="code-block">
-            <pre>cat > ~/.config/autostart/kepler.desktop << 'EOF'
-[Desktop Entry]
-Type=Application
-Name=Kepler Backend
-Exec=/path/to/kepler-backend-x64.AppImage
-EOF</pre>
+            <pre>systemctl --user enable --now kepler</pre>
+          </div>
+        </div>
+        <div class="dl-panel">
+          <div class="dl-panel-header">
+            <span class="dl-os">macOS</span>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="launchctl load ~/Library/LaunchAgents/kepler.plist">Copy</button>
+          </div>
+          <div class="code-block">
+            <pre>launchctl load ~/Library/LaunchAgents/kepler.plist</pre>
           </div>
         </div>
       </div>
