@@ -244,11 +244,21 @@ textarea { font-family: 'SFMono-Regular', Consolas, monospace; resize: vertical;
 .download-card { background: rgba(40,40,40,0.9); padding: 1.5rem; border-radius: 8px; }
 .download-card h2 { color: #fff; margin-bottom: 0.5rem; }
 .download-card p { color: #888; margin-bottom: 1rem; }
-.setup-code { background: #1a1a1a; color: #f8f8f2; padding: 1rem; border-radius: 4px; margin-top: 1rem; font-size: 0.85rem; overflow-x: auto; }
-.version-list { margin-top: 2rem; background: rgba(40,40,40,0.9); padding: 1.5rem; border-radius: 8px; }
-.version-list h2 { color: #fff; margin-bottom: 0.5rem; }
-.version-list ul { list-style: none; }
-.version-list li { padding: 0.3rem 0; color: #aaa; }
+.setup-code { background: #1a1a1a; color: #f8f8f2; padding: 1rem; border-radius: 4px; margin-top: 1rem; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.setup-section { margin-bottom: 2.5rem; }
+.setup-section h2 { color: #ddd; font-size: 1.15rem; margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.setup-section ul { list-style: none; padding: 0; }
+.setup-section li { color: #bbb; font-size: 0.9rem; padding: 0.3rem 0; }
+.setup-section li a { color: #6ab0ff; }
+.setup-section p { color: #bbb; font-size: 0.9rem; line-height: 1.6; }
+.setup-note { color: #888; font-size: 0.85rem; margin-top: 0.5rem; }
+.setup-tabs { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1rem; }
+.setup-tab { background: rgba(40,40,40,0.7); border-radius: 8px; padding: 1.2rem; }
+.setup-tab h3 { color: #ddd; font-size: 0.95rem; margin-bottom: 0.3rem; }
+.service-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+.service-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: #bbb; font-size: 0.9rem; }
+.service-table td:first-child { color: #ddd; font-weight: 500; width: 120px; }
+.service-table td:last-child { color: #888; text-align: right; }
 
 @media (max-width: 600px) {
   main { padding: 1rem; }

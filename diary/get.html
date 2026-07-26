@@ -3,60 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ediary — Download</title>
+  <title>Download Backend — Kepler</title>
   <link rel="icon" type="image/svg+xml" href="/logo.svg">
   <link rel="stylesheet" href="/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <script>let _u;try{_u=JSON.parse(localStorage.getItem('kepler_user')||sessionStorage.getItem('kepler_user'))}catch{}if(!_u||!_u.token){location.href='/'}</script>
 </head>
 <body>
   <nav>
-    <a href="https://kepler.emtypyie.in" class="brand"><svg class="brand-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9l0 3"/></svg> Kepler</a>
-    <span class="breadcrumb">/ ediary / Get</span>
-    <div class="user-menu">
-      <div class="avatar" id="userAvatar" onclick="toggleMenu()">U</div>
-      <div class="dropdown" id="userDropdown">
-        <div class="dropdown-header" id="dropdownUser">User</div>
-        <a class="dropdown-item" href="/edit-profile">Edit Profile</a>
-        <a class="dropdown-item" href="/settings">Settings</a>
-        <a class="dropdown-item" href="/dashboard">Services</a>
-        <a class="dropdown-item" href="https://kepler.emtypyie.in/documentation" target="_blank">Documentation</a>
-        <a class="dropdown-item" href="https://emtypyie.in" target="_blank">Main Site</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item danger" onclick="auth.logout()">Sign Out</a>
-      </div>
-    </div>
+    <a href="https://kepler.emtypyie.in" class="brand"><svg class="brand-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9v3"/></svg> Kepler</a>
+    <span class="breadcrumb">Backend</span>
+    <a href="/" class="btn btn-secondary" style="margin-left:auto">← Back</a>
   </nav>
 
   <main>
-    <h1 class="page-title">Download ediary Backend</h1>
-    <p class="subtitle">Run the backend locally to use ediary on your machine.</p>
+    <h1 class="page-title">Download Kepler Backend</h1>
+    <p class="subtitle">Run the backend locally to use ediary, pyieOS, and all Kepler services.</p>
 
-    <div class="download-grid">
-      <div class="download-card">
-        <h2>🐧 Linux / Unix</h2>
-        <p>Version 1.0.0</p>
-        <a href="#" class="btn" onclick="alert('Download started: ediary-linux-v1.0.0.tar.gz')">Download .tar.gz</a>
-        <pre class="setup-code">tar -xzf ediary-linux-v1.0.0.tar.gz
-cd ediary-backend
-chmod +x setup.sh
-./setup.sh</pre>
-      </div>
-      <div class="download-card">
-        <h2>🪟 Windows</h2>
-        <p>Version 1.0.0</p>
-        <a href="#" class="btn" onclick="alert('Download started: ediary-win-v1.0.0.zip')">Download .zip</a>
-        <pre class="setup-code">Expand-Archive ediary-win-v1.0.0.zip -DestinationPath .
-cd ediary-backend
-.\setup.bat</pre>
+    <div class="setup-section">
+      <h2>Prerequisites</h2>
+      <ul>
+        <li><strong>Node.js</strong> v18 or later — <a href="https://nodejs.org" target="_blank">Download</a></li>
+        <li><strong>npm</strong> (ships with Node.js)</li>
+      </ul>
+    </div>
+
+    <div class="setup-section">
+      <h2>Quick Start</h2>
+      <div class="setup-tabs">
+        <div class="setup-tab">
+          <h3>Windows</h3>
+          <pre class="setup-code">git clone https://github.com/emtypyie/kepler.git
+cd kepler/backend
+npm install
+node server.js</pre>
+          <p class="setup-note">Then open <a href="https://kepler.emtypyie.in">kepler.emtypyie.in</a> in your browser.</p>
+        </div>
+        <div class="setup-tab">
+          <h3>Linux / macOS</h3>
+          <pre class="setup-code">git clone https://github.com/emtypyie/kepler.git
+cd kepler/backend
+npm install
+node server.js</pre>
+          <p class="setup-note">Then open <a href="https://kepler.emtypyie.in">kepler.emtypyie.in</a> in your browser.</p>
+        </div>
       </div>
     </div>
 
-    <div class="version-list">
-      <h2>All Versions</h2>
-      <ul>
-        <li>v1.0.0 — <a href="#">Linux</a> · <a href="#">Windows</a> (latest)</li>
-      </ul>
+    <div class="setup-section">
+      <h2>Auto-Start (Optional)</h2>
+      <p>Configure Kepler to launch automatically when your system boots.</p>
+      <div class="setup-tabs">
+        <div class="setup-tab">
+          <h3>Windows (PowerShell as Admin)</h3>
+          <pre class="setup-code">powershell -ExecutionPolicy Bypass -File backend\setup\windows.ps1</pre>
+          <h3 style="margin-top:1rem">Linux</h3>
+          <pre class="setup-code">chmod +x backend/setup/linux.sh
+sudo ./backend/setup/linux.sh</pre>
+          <h3 style="margin-top:1rem">macOS</h3>
+          <pre class="setup-code">chmod +x backend/setup/macos.sh
+./backend/setup/macos.sh</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="setup-section">
+      <h2>Verify It's Running</h2>
+      <p>Once the server is running, check the health endpoint:</p>
+      <pre class="setup-code">curl http://localhost:41783/api/health</pre>
+      <p>Expected response:</p>
+      <pre class="setup-code">{"status":"ok","version":"2.0.0","port":41783,"services":["ediary","pyieos"]}</pre>
+    </div>
+
+    <div class="setup-section">
+      <h2>Available Services</h2>
+      <table class="service-table">
+        <tr><td>ediary</td><td>Note-taking app with Markdown support</td><td>Available now</td></tr>
+        <tr><td>pyieOS</td><td>System dashboard &amp; service manager</td><td>Coming soon</td></tr>
+      </table>
     </div>
   </main>
 

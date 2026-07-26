@@ -1,0 +1,6 @@
+@echo off
+cd /d "%~dp0"
+echo Installing dependencies...
+call npm install
+echo Starting Kepler Backend...
+node server.js
