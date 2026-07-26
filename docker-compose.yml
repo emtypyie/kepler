@@ -1,0 +1,11 @@
+version: "3"
+services:
+  kepler:
+    build: ./backend
+    container_name: kepler
+    ports:
+      - "41783:41783"
+    volumes:
+      - ./backend/users.json:/app/users.json
+      - ./backend/notes:/app/notes
+    restart: unless-stopped
