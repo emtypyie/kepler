@@ -25,3 +25,11 @@ window.addEventListener('scroll', () => {
       : 'rgba(20,20,20,0.6)';
   }
 });
+
+// Guide sidebar toggle
+function toggleGuide() {
+  const sidebar = document.getElementById('guideSidebar');
+  const btn = document.getElementById('guideToggle');
+  sidebar.classList.toggle('collapsed');
+  btn.textContent = sidebar.classList.contains('collapsed') ? '›' : '‹';
+}

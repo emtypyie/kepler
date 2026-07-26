@@ -30,6 +30,20 @@ main { max-width: 900px; margin: 0 auto; padding: 2rem; }
 
 .pixel-text { font-family: 'Press Start 2P', monospace; }
 
+/* Guide sidebar */
+.guide-sidebar { position: fixed; top: 50%; right: 0; transform: translateY(-50%); background: rgba(25,25,30,0.92); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06); border-right: none; border-radius: 10px 0 0 10px; padding: 1.2rem 1rem 1.2rem 1.2rem; z-index: 90; min-width: 200px; transition: transform 0.35s ease, opacity 0.35s ease; }
+.guide-sidebar.collapsed { transform: translateY(-50%) translateX(100%); opacity: 0; pointer-events: none; }
+.guide-header { color: #888; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.guide-step { display: flex; gap: 0.7rem; margin-bottom: 1rem; }
+.guide-step:last-child { margin-bottom: 0; }
+.step-num { width: 22px; height: 22px; border-radius: 50%; background: rgba(74,144,217,0.15); color: #6ab0ff; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.step-title { color: #ddd; font-size: 0.85rem; font-weight: 600; }
+.step-desc { color: #888; font-size: 0.75rem; line-height: 1.4; margin-top: 0.15rem; }
+.step-link { color: #6ab0ff; font-size: 0.75rem; display: inline-block; margin-top: 0.2rem; }
+.step-link:hover { text-decoration: underline; }
+.guide-toggle { position: absolute; left: -24px; top: 50%; transform: translateY(-50%); width: 24px; height: 48px; border: 1px solid rgba(255,255,255,0.06); border-right: none; border-radius: 6px 0 0 6px; background: rgba(25,25,30,0.92); color: #888; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(12px); }
+.guide-toggle:hover { color: #ccc; }
+
 .landing-nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(20,20,20,0.6); backdrop-filter: blur(12px); padding: 0.8rem 2rem; display: flex; align-items: center; z-index: 100; transition: background 0.3s; }
 .landing-nav .brand { font-size: 1.1rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; }
 .landing-nav .brand:hover { opacity: 0.9; text-decoration: none; }
