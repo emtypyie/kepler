@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — Kepler</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>let _u;try{_u=JSON.parse(localStorage.getItem('kepler_user')||sessionStorage.getItem('kepler_user'))}catch{}if(_u&&_u.token){location.href='/dashboard'}</script>
+</head>
+<body>
+  <nav>
+    <a href="https://kepler.emtypyie.in" class="brand"><svg class="brand-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9l0 3"/></svg> Kepler</a>
+    <a href="https://kepler.emtypyie.in" class="btn btn-secondary">← Back</a>
+  </nav>
+
+  <div class="auth-container">
+    <div class="auth-box fade-up">
+      <h1 class="auth-logo"><svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9l0 3"/></svg> Kepler</h1>
+      <p class="auth-subtitle">Sign in to your local services</p>
+
+      <div id="authForms">
+        <div id="loginForm">
+          <h2>Sign In</h2>
+          <input type="text" id="loginUser" placeholder="Username" autocomplete="username">
+          <input type="password" id="loginPass" placeholder="Password" autocomplete="current-password">
+          <label class="checkbox-row">
+            <input type="checkbox" id="staySignedIn"> Stay signed in
+          </label>
+          <button class="btn" onclick="auth.login()">Sign In</button>
+          <p class="switch">No account? <a href="#" onclick="auth.toggle()">Create one</a></p>
+        </div>
+        <div id="signupForm" style="display:none">
+          <h2>Create Account</h2>
+          <input type="text" id="signupUser" placeholder="Username" autocomplete="username">
+          <input type="password" id="signupPass" placeholder="Password" autocomplete="new-password">
+          <input type="password" id="signupConfirm" placeholder="Confirm password" autocomplete="new-password">
+          <button class="btn" onclick="auth.signup()">Create Account</button>
+          <p class="switch">Already have one? <a href="#" onclick="auth.toggle()">Sign in</a></p>
+        </div>
+      </div>
+
+      <div id="authError" class="error-msg"></div>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

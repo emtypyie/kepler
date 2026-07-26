@@ -9,75 +9,97 @@
   <script>let _u;try{_u=JSON.parse(localStorage.getItem('kepler_user')||sessionStorage.getItem('kepler_user'))}catch{}if(_u&&_u.token){location.href='/dashboard'}</script>
 </head>
 <body class="landing">
-  <nav>
+  <div class="parallax-bg" id="parallaxBg"></div>
+
+  <nav class="landing-nav" id="landingNav">
     <a href="https://kepler.emtypyie.in" class="brand"><svg class="brand-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9l0 3"/></svg> Kepler</a>
-    <div class="nav-actions">
-      <button class="btn" onclick="document.getElementById('loginSection').scrollIntoView({behavior:'smooth'})">Sign In</button>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#services">Services</a>
+      <a href="/auth" class="btn btn-nav">Get Started</a>
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="hero-content">
-      <svg class="hero-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9l0 3"/></svg>
-      <h1>Kepler</h1>
+  <section class="hero" id="hero">
+    <div class="hero-content fade-up">
+      <div class="hero-glow"></div>
+      <svg class="hero-icon" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9l0 3"/></svg>
+      <h1 class="hero-title">Kepler</h1>
       <p class="hero-sub">Your local service hub</p>
-      <p class="hero-desc">Run local services on your machine and access them from anywhere.<br>Powered by emtypyie.cli runtime.</p>
+      <p class="hero-desc">Run local services on your machine and access them from anywhere.<br>Powered by the emtypyie.cli runtime.</p>
       <div class="hero-buttons">
-        <button class="btn btn-lg" onclick="document.getElementById('loginSection').scrollIntoView({behavior:'smooth'})">Get Started</button>
-        <a href="/diary/get" class="btn btn-lg btn-secondary">Download Backend</a>
+        <a href="/auth" class="btn btn-lg btn-primary">Get Started</a>
+        <a href="/diary/get" class="btn btn-lg btn-outline">Download Backend</a>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="section-label fade-up">Why Kepler</div>
+    <h2 class="section-title fade-up">Everything you need, locally</h2>
+    <p class="section-desc fade-up">Your data stays on your machine. Access your services from any device on your network.</p>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🔒</div>
+        <h3>100% Local</h3>
+        <p>All data stays on your machine. No cloud, no third parties, full control.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast & Light</h3>
+        <p>Built on the emtypyie.cli runtime. Minimal resource usage, maximum performance.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🌐</div>
+        <h3>Access Anywhere</h3>
+        <p>Connect from any device on your network. Your services, always available.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🎨</div>
+        <h3>Customizable</h3>
+        <p>Dark theme, avatar, profile settings — make it yours.</p>
       </div>
     </div>
   </section>
 
-  <section class="services-section" id="servicesSection">
-    <h2 class="section-title">Available Services</h2>
-    <div class="landing-services">
-      <div class="landing-card" onclick="location.href='/diary/home'">
+  <section class="services-landing" id="services">
+    <div class="section-label fade-up">Services</div>
+    <h2 class="section-title fade-up">Available on Kepler</h2>
+    <p class="section-desc fade-up">Discover and use local services hosted on your machine.</p>
+    <div class="landing-cards">
+      <div class="landing-card fade-up" onclick="location.href='/auth'">
         <div class="card-icon">📓</div>
         <h3>ediary</h3>
-        <p>Write and manage your notes with Markdown. Create, edit, and organize your thoughts locally.</p>
+        <p>A full-featured note-taking app with Markdown support. Write, organize, and search your notes locally.</p>
+        <span class="card-link">Launch →</span>
       </div>
-      <div class="landing-card" onclick="location.href='/diary/get'">
-        <div class="card-icon">⬇</div>
-        <h3>ediary Backend</h3>
-        <p>Download and run the local backend server to enable full note-taking capabilities.</p>
+      <div class="landing-card fade-up" onclick="location.href='/diary/get'">
+        <div class="card-icon">⚙️</div>
+        <h3>Backend Service</h3>
+        <p>Download and run the local backend server. Required for ediary and other services.</p>
+        <span class="card-link">Download →</span>
       </div>
     </div>
   </section>
 
-  <section class="login-section" id="loginSection">
-    <h2 class="section-title">Sign In to Kepler</h2>
-    <p class="section-sub">Create an account or sign in to access your services.</p>
-    <div class="auth-box">
-      <div id="authForms">
-        <div id="loginForm">
-          <h2>Sign In</h2>
-          <input type="text" id="loginUser" placeholder="Username" autocomplete="username">
-          <input type="password" id="loginPass" placeholder="Password" autocomplete="current-password">
-          <label class="checkbox-row">
-            <input type="checkbox" id="staySignedIn"> Stay signed in
-          </label>
-          <button class="btn" onclick="auth.login()">Sign In</button>
-          <p class="switch">No account? <a href="#" onclick="auth.toggle()">Sign up</a></p>
-        </div>
-        <div id="signupForm" style="display:none">
-          <h2>Create Account</h2>
-          <input type="text" id="signupUser" placeholder="Username" autocomplete="username">
-          <input type="password" id="signupPass" placeholder="Password" autocomplete="new-password">
-          <input type="password" id="signupConfirm" placeholder="Confirm password" autocomplete="new-password">
-          <button class="btn" onclick="auth.signup()">Create Account</button>
-          <p class="switch">Already have one? <a href="#" onclick="auth.toggle()">Sign in</a></p>
-        </div>
-      </div>
-      <div id="authError" class="error-msg"></div>
+  <section class="cta">
+    <div class="cta-box fade-up">
+      <h2>Ready to get started?</h2>
+      <p>Create your local account and start using Kepler services in seconds.</p>
+      <a href="/auth" class="btn btn-lg btn-primary">Create Account</a>
     </div>
   </section>
 
   <footer class="landing-footer">
+    <div class="footer-links">
+      <a href="https://kepler.emtypyie.in">Kepler</a>
+      <a href="https://emtypyie.in">emtypyie.cli</a>
+      <a href="/diary/get">Download</a>
+    </div>
     <p>Powered by <a href="https://emtypyie.in" target="_blank">emtypyie.cli</a></p>
   </footer>
 
-  <script src="/js/auth.js"></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/landing.js"></script>
 </body>
 </html>
