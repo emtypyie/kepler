@@ -103,6 +103,17 @@ textarea { font-family: 'SFMono-Regular', Consolas, monospace; resize: vertical;
 .setting-row input { flex: 1; min-width: 150px; }
 .setting-row .btn { flex-shrink: 0; }
 
+.page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.page-header .page-title { margin-bottom: 0; }
+.profile-avatar-row { display: flex; align-items: center; gap: 1rem; }
+.profile-avatar-row input[type="file"] { flex: 1; }
+.field-hint { color: #666; font-size: 0.8rem; margin: 0; }
+
+/* Unsaved bar */
+.unsaved-bar { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(60,60,60,0.96); backdrop-filter: blur(8px); padding: 0.8rem 2rem; display: flex; align-items: center; gap: 1rem; z-index: 300; border-top: 1px solid #555; }
+.unsaved-bar span { color: #fff; font-size: 0.9rem; flex: 1; }
+.unsaved-actions { display: flex; gap: 0.5rem; }
+
 /* Download */
 .download-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 .download-card { background: rgba(40,40,40,0.9); padding: 1.5rem; border-radius: 8px; }

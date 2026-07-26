@@ -149,6 +149,18 @@ function setUserUI() {
   const dropdownUser = document.getElementById('dropdownUser');
   if (avatar) avatar.textContent = user.username.charAt(0).toUpperCase();
   if (dropdownUser) dropdownUser.textContent = user.username;
+  if (avatar && getBackendUrl()) {
+    fetch(`${getBackendUrl()}/api/auth/profile`, {
+      headers: { 'Authorization': user.token },
+    }).then(r => r.json()).then(data => {
+      if (data.avatar) {
+        avatar.innerHTML = '';
+        avatar.style.backgroundImage = `url(${data.avatar})`;
+        avatar.style.backgroundSize = 'cover';
+        avatar.style.backgroundPosition = 'center';
+      }
+    }).catch(() => {});
+  }
 }
 
 document.addEventListener('DOMContentLoaded', setUserUI);
