@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 $Repo = "emtypyie/kepler"
-$InstallDir = "$env:USERPROFILE\.kepler"
+$InstallDir = "$env:USERPROFILE\.kepler\backend"
 
 Write-Host "==> Kepler Installer" -ForegroundColor Cyan
 Write-Host ""
@@ -9,13 +9,14 @@ Write-Host ""
 $docker = Get-Command docker -ErrorAction SilentlyContinue
 if ($docker) {
   Write-Host "==> Docker detected — deploying via Docker" -ForegroundColor Green
-  if (-not (Test-Path "$InstallDir\repo")) {
-    New-Item -ItemType Directory -Path $InstallDir -Force | Out-Null
-    git clone --depth 1 "https://github.com/$Repo.git" "$InstallDir\repo"
+  $repoDir = "$env:USERPROFILE\.kepler\repo"
+  if (-not (Test-Path $repoDir)) {
+    New-Item -ItemType Directory -Path "$env:USERPROFILE\.kepler" -Force | Out-Null
+    git clone --depth 1 "https://github.com/$Repo.git" $repoDir
   } else {
-    Set-Location "$InstallDir\repo"; git pull
+    Set-Location $repoDir; git pull
   }
-  Set-Location "$InstallDir\repo"
+  Set-Location $repoDir
   docker compose up -d
   Write-Host ""
   Write-Host "  Kepler running at http://localhost:41783" -ForegroundColor Green
@@ -24,52 +25,58 @@ if ($docker) {
   exit 0
 }
 
-Write-Host "==> Docker not found — installing directly" -ForegroundColor Yellow
+Write-Host "==> Docker not found — installing standalone exe" -ForegroundColor Yellow
 
-# Check Node.js
-$nodeVer = node -v 2>$null
-if (-not $nodeVer) {
-  Write-Host "==> Node.js not found. Downloading..."
-  $nodeUrl = "https://nodejs.org/dist/v22.0.0/node-v22.0.0-x64.msi"
-  $installer = "$env:TEMP\node-installer.msi"
-  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-  Invoke-WebRequest -Uri $nodeUrl -OutFile $installer
-  Start-Process msiexec.exe -ArgumentList "/i `"$installer`" /quiet /norestart" -Wait
-  $env:Path = [Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [Environment]::GetEnvironmentVariable("Path", "User")
-  $nodeVer = node -v
-}
-Write-Host "   Node $nodeVer"
-
-Write-Host "==> Downloading Kepler Backend..."
+# Download latest release exe
 New-Item -ItemType Directory -Path $InstallDir -Force | Out-Null
-$zipFile = "$InstallDir\kepler-backend.zip"
+Write-Host "==> Downloading Kepler Backend..."
 try {
   $release = Invoke-RestMethod -Uri "https://api.github.com/repos/$Repo/releases/latest"
-  $asset = $release.assets | Where-Object { $_.name -like "*kepler-backend*" } | Select-Object -First 1
-  if ($asset) { Invoke-WebRequest -Uri $asset.browser_download_url -OutFile $zipFile }
+  $asset = $release.assets | Where-Object { $_.name -like "*.exe" } | Select-Object -First 1
+  if ($asset) {
+    Write-Host "  Found: $($asset.name)"
+    Invoke-WebRequest -Uri $asset.browser_download_url -OutFile "$InstallDir\kepler-backend.exe"
+  } else {
+    throw "No exe asset found"
+  }
 } catch {
-  Invoke-WebRequest -Uri "https://github.com/$Repo/releases/latest/download/kepler-backend-v2.0.0.zip" -OutFile $zipFile
+  Write-Host "  Download failed: $_" -ForegroundColor Red
+  exit 1
 }
 
-Write-Host "==> Extracting..."
-Remove-Item -Recurse -Force "$InstallDir\backend" -ErrorAction SilentlyContinue
-Expand-Archive -Path $zipFile -DestinationPath "$InstallDir\backend" -Force
-Remove-Item $zipFile -Force
+Write-Host "==> Installing as background service..."
+# Run the setup script to register auto-start
+$setupScript = "$InstallDir\setup\windows.ps1"
+if (-not (Test-Path $setupScript)) {
+  # Extract setup from exe? For now just create it
+  Write-Host "  Setup script not found, creating scheduled task directly..."
+  
+  $taskName = "KeplerBackend"
+  $batPath = "$InstallDir\autostart\kepler.bat"
+  New-Item -ItemType Directory -Path (Split-Path $batPath -Parent) -Force | Out-Null
+  @"
+@echo off
+cd /d "$InstallDir"
+"$InstallDir\kepler-backend.exe"
+"@ | Out-File -FilePath $batPath -Encoding ASCII
+  
+  # Create scheduled task for current user on logon
+  schtasks /Create /SC ONLOGON /TN $taskName /TR "`"$batPath`"" /F 2>$null
+  Write-Host "  Scheduled task created: $taskName"
+} else {
+  & $setupScript
+}
 
-Set-Location "$InstallDir\backend"
-Write-Host "==> Installing dependencies..."
-npm install --silent
+# Start the service now
+Write-Host "==> Starting Kepler..."
+Start-Process -FilePath "$InstallDir\kepler-backend.exe" -WindowStyle Hidden -WorkingDirectory $InstallDir
 
 Write-Host ""
 Write-Host "============================================"
-Write-Host "  Kepler Backend installed!" -ForegroundColor Green
+Write-Host "  Kepler installed and running!" -ForegroundColor Green
 Write-Host "============================================"
 Write-Host ""
-Write-Host "  Start: cd $InstallDir\backend && node server.js"
-Write-Host "  Open  https://kepler.emtypyie.in"
+Write-Host "  Runs in background on startup"
+Write-Host "  Open https://kepler.emtypyie.in in your browser"
+Write-Host "  API: http://localhost:41783/api/health"
 Write-Host ""
-
-$choice = Read-Host "Start Kepler Backend now? [Y/n]"
-if ($choice -ne "n" -and $choice -ne "N") {
-  node server.js
-}
