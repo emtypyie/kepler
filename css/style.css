@@ -7,7 +7,7 @@ nav { background: rgba(30,30,30,0.92); color: #fff; padding: 0.75rem 2rem; displ
 nav .brand { font-size: 1.1rem; font-weight: 700; color: #fff; text-decoration: none; }
 nav > span:not(.brand) { margin-right: auto; }
 
-.user-menu { position: relative; display: flex; align-items: center; }
+.user-menu { position: relative; display: flex; align-items: center; margin-left: auto; }
 .avatar { width: 34px; height: 34px; border-radius: 50%; background: #4a90d9; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.95rem; cursor: pointer; user-select: none; transition: opacity 0.2s; }
 .avatar:hover { opacity: 0.85; }
 .dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: rgba(40,40,40,0.96); border: 1px solid #444; border-radius: 8px; min-width: 180px; display: none; z-index: 100; box-shadow: 0 4px 16px rgba(0,0,0,0.4); backdrop-filter: blur(8px); padding: 0.35rem 0; }
