@@ -28,6 +28,7 @@ async function loadProfile() {
 function toggleEdit() {
   isEditing = !isEditing;
   const btn = document.getElementById('editBtn');
+  const saveBtn = document.getElementById('saveBtn');
   const inputs = document.querySelectorAll('#profileEmail, #profileUsername');
   const fileInput = document.getElementById('avatarInput');
   const checkBtn = document.getElementById('checkUsernameBtn');
@@ -36,6 +37,7 @@ function toggleEdit() {
   if (isEditing) {
     btn.textContent = 'Cancel';
     btn.className = 'btn btn-danger';
+    saveBtn.style.display = 'inline-block';
     inputs.forEach(i => i.disabled = false);
     fileInput.disabled = false;
     checkBtn.style.display = 'inline-block';
@@ -43,6 +45,7 @@ function toggleEdit() {
   } else {
     btn.textContent = 'Edit';
     btn.className = 'btn btn-secondary';
+    saveBtn.style.display = 'none';
     inputs.forEach(i => i.disabled = true);
     fileInput.disabled = true;
     checkBtn.style.display = 'none';
@@ -246,6 +249,50 @@ function showMsg(text, type) {
   const el = document.getElementById('profileMsg');
   el.textContent = text;
   el.style.color = type === 'success' ? '#4caf50' : '#f44336';
+}
+
+async function saveAll() {
+  const user = auth.getUser();
+  if (!user) return;
+  const url = `${getBackendUrl()}/api/auth/profile`;
+
+  try {
+    const email = document.getElementById('profileEmail').value.trim();
+    if (email) {
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'Authorization': user.token },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+    }
+
+    const newUsername = document.getElementById('profileUsername').value.trim();
+    if (newUsername && newUsername !== profileData.username) {
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'Authorization': user.token },
+        body: JSON.stringify({ username: newUsername }),
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      if (data.changed) {
+        const u = auth.getUser();
+        u.username = newUsername;
+        const storage = localStorage.getItem('kepler_user') ? localStorage : sessionStorage;
+        storage.setItem('kepler_user', JSON.stringify(u));
+      }
+    }
+
+    showMsg('Profile saved', 'success');
+    hasChanges = false;
+    hideUnsavedBar();
+    toggleEdit();
+    setTimeout(() => { showMsg(''); }, 3000);
+  } catch (e) {
+    showMsg(e.message || 'Save failed', 'error');
+  }
 }
 
 window.addEventListener('beforeunload', (e) => {

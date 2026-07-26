@@ -2,15 +2,24 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const USERS_FILE = path.join(__dirname, '..', 'users.json');
+function getDataDir() {
+  if (process.pkg) {
+    return path.dirname(process.execPath);
+  }
+  return path.join(__dirname, '..');
+}
+
+function getUsersFile() {
+  return path.join(getDataDir(), 'users.json');
+}
 
 function readUsers() {
-  try { return JSON.parse(fs.readFileSync(USERS_FILE, 'utf-8')); }
+  try { return JSON.parse(fs.readFileSync(getUsersFile(), 'utf-8')); }
   catch { return []; }
 }
 
 function writeUsers(users) {
-  fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2), 'utf-8');
+  fs.writeFileSync(getUsersFile(), JSON.stringify(users, null, 2), 'utf-8');
 }
 
 function makeToken() {

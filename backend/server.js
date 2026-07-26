@@ -4,9 +4,16 @@ const path = require('path');
 
 const { readUsers, writeUsers, makeToken, hashPassword, verifyPassword, requireAuth } = require('./core/auth');
 
+function getDataDir() {
+  if (process.pkg) {
+    return path.dirname(process.execPath);
+  }
+  return __dirname;
+}
+
 const app = express();
 const PORT = 41783;
-const USERS_FILE = path.join(__dirname, 'users.json');
+const USERS_FILE = path.join(getDataDir(), 'users.json');
 
 if (!fs.existsSync(USERS_FILE)) fs.writeFileSync(USERS_FILE, '[]', 'utf-8');
 

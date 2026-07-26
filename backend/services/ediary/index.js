@@ -3,7 +3,14 @@ const path = require('path');
 const { marked } = require('marked');
 const { requireAuth } = require('../../core/auth');
 
-const NOTES_DIR = path.join(__dirname, '..', '..', 'notes');
+function getDataDir() {
+  if (process.pkg) {
+    return path.dirname(process.execPath);
+  }
+  return path.join(__dirname, '..', '..');
+}
+
+const NOTES_DIR = path.join(getDataDir(), 'notes');
 if (!fs.existsSync(NOTES_DIR)) fs.mkdirSync(NOTES_DIR, { recursive: true });
 
 function register(app) {
