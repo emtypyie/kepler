@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — Kepler</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <a href="/dashboard" class="brand">← Kepler</a>
+    <span style="color:#fff;font-weight:600;">Settings</span>
+    <button class="btn btn-secondary" onclick="auth.logout()">Sign Out</button>
+  </nav>
+
+  <main>
+    <h1 class="page-title">Settings</h1>
+
+    <section class="settings-section">
+      <h2>Backend Connection</h2>
+      <div class="setting-row">
+        <label>Backend URL</label>
+        <input type="text" id="backendUrl" placeholder="http://localhost:41783">
+        <button class="btn" onclick="saveBackendUrl()">Save</button>
+      </div>
+      <div class="setting-row">
+        <label>Status</label>
+        <span id="backendStatus">Checking...</span>
+        <button class="btn btn-secondary" onclick="checkBackend()">Test</button>
+      </div>
+    </section>
+
+    <section class="settings-section">
+      <h2>Account</h2>
+      <div class="setting-row">
+        <label>Username</label>
+        <span id="settingsUser"></span>
+      </div>
+      <div class="setting-row">
+        <label>Change Password</label>
+        <input type="password" id="currentPass" placeholder="Current password">
+        <input type="password" id="newPass" placeholder="New password">
+        <button class="btn" onclick="changePassword()">Update</button>
+      </div>
+      <div class="setting-row">
+        <label>Delete Account</label>
+        <button class="btn btn-danger" onclick="deleteAccount()">Delete My Account</button>
+      </div>
+    </section>
+
+    <div id="settingsMsg" class="error-msg"></div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

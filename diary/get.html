@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ediary — Download</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <a href="/dashboard" class="brand">← Kepler</a>
+    <span style="color:#fff;font-weight:600;">ediary / Get</span>
+    <button class="btn-icon" onclick="location.href='/settings'" title="Settings">⚙</button>
+  </nav>
+
+  <main>
+    <h1 class="page-title">Download ediary Backend</h1>
+    <p class="subtitle">Run the backend locally to use ediary on your machine.</p>
+
+    <div class="download-grid">
+      <div class="download-card">
+        <h2>🐧 Linux / Unix</h2>
+        <p>Version 1.0.0</p>
+        <a href="#" class="btn" onclick="alert('Download started: ediary-linux-v1.0.0.tar.gz')">Download .tar.gz</a>
+        <pre class="setup-code">tar -xzf ediary-linux-v1.0.0.tar.gz
+cd ediary-backend
+chmod +x setup.sh
+./setup.sh</pre>
+      </div>
+      <div class="download-card">
+        <h2>🪟 Windows</h2>
+        <p>Version 1.0.0</p>
+        <a href="#" class="btn" onclick="alert('Download started: ediary-win-v1.0.0.zip')">Download .zip</a>
+        <pre class="setup-code">Expand-Archive ediary-win-v1.0.0.zip -DestinationPath .
+cd ediary-backend
+.\setup.bat</pre>
+      </div>
+    </div>
+
+    <div class="version-list">
+      <h2>All Versions</h2>
+      <ul>
+        <li>v1.0.0 — <a href="#">Linux</a> · <a href="#">Windows</a> (latest)</li>
+      </ul>
+    </div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+</body>
+</html>

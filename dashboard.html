@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kepler — Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <span class="brand">✦ Kepler</span>
+    <span class="nav-user" id="navUser"></span>
+    <button class="btn-icon" onclick="location.href='/settings'" title="Settings">⚙</button>
+    <button class="btn btn-secondary" onclick="auth.logout()">Sign Out</button>
+  </nav>
+
+  <main>
+    <h1 class="page-title">Your Services</h1>
+    <div class="service-grid">
+      <div class="service-card" onclick="location.href='/diary/home'">
+        <div class="service-icon">📓</div>
+        <h2>ediary</h2>
+        <p>Write and manage your notes</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

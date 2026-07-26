@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ediary — Notes</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <a href="/dashboard" class="brand">← Kepler</a>
+    <span style="color:#fff;font-weight:600;">ediary</span>
+    <button class="btn-icon" onclick="location.href='/settings'" title="Settings">⚙</button>
+    <button class="btn btn-secondary" onclick="auth.logout()">Sign Out</button>
+  </nav>
+
+  <main id="app">
+    <div class="note-header">
+      <h1>Notes</h1>
+      <button class="btn" onclick="diary.showEditor()">+ New Note</button>
+    </div>
+    <div id="noteList" class="notes-grid"></div>
+    <div id="noteView" style="display:none"></div>
+    <div id="noteEditor" style="display:none"></div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/diary.js"></script>
+</body>
+</html>
