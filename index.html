@@ -3,17 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kepler — Local Services</title>
+  <title>Kepler — Your Local Service Hub</title>
   <link rel="icon" type="image/svg+xml" href="/logo.svg">
   <link rel="stylesheet" href="/css/style.css">
   <script>let _u;try{_u=JSON.parse(localStorage.getItem('kepler_user')||sessionStorage.getItem('kepler_user'))}catch{}if(_u&&_u.token){location.href='/dashboard'}</script>
 </head>
-<body>
-  <div class="auth-container">
-    <div class="auth-box">
-      <h1 class="logo"><svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9l0 3"/></svg> Kepler</h1>
-      <p class="subtitle">Your local service hub</p>
+<body class="landing">
+  <nav>
+    <a href="https://kepler.emtypyie.in" class="brand"><svg class="brand-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9l0 3"/></svg> Kepler</a>
+    <div class="nav-actions">
+      <button class="btn" onclick="document.getElementById('loginSection').scrollIntoView({behavior:'smooth'})">Sign In</button>
+    </div>
+  </nav>
 
+  <section class="hero">
+    <div class="hero-content">
+      <svg class="hero-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9l0 3"/></svg>
+      <h1>Kepler</h1>
+      <p class="hero-sub">Your local service hub</p>
+      <p class="hero-desc">Run local services on your machine and access them from anywhere.<br>Powered by emtypyie.cli runtime.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-lg" onclick="document.getElementById('loginSection').scrollIntoView({behavior:'smooth'})">Get Started</button>
+        <a href="/diary/get" class="btn btn-lg btn-secondary">Download Backend</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section" id="servicesSection">
+    <h2 class="section-title">Available Services</h2>
+    <div class="landing-services">
+      <div class="landing-card" onclick="location.href='/diary/home'">
+        <div class="card-icon">📓</div>
+        <h3>ediary</h3>
+        <p>Write and manage your notes with Markdown. Create, edit, and organize your thoughts locally.</p>
+      </div>
+      <div class="landing-card" onclick="location.href='/diary/get'">
+        <div class="card-icon">⬇</div>
+        <h3>ediary Backend</h3>
+        <p>Download and run the local backend server to enable full note-taking capabilities.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="login-section" id="loginSection">
+    <h2 class="section-title">Sign In to Kepler</h2>
+    <p class="section-sub">Create an account or sign in to access your services.</p>
+    <div class="auth-box">
       <div id="authForms">
         <div id="loginForm">
           <h2>Sign In</h2>
@@ -25,7 +60,6 @@
           <button class="btn" onclick="auth.login()">Sign In</button>
           <p class="switch">No account? <a href="#" onclick="auth.toggle()">Sign up</a></p>
         </div>
-
         <div id="signupForm" style="display:none">
           <h2>Create Account</h2>
           <input type="text" id="signupUser" placeholder="Username" autocomplete="username">
@@ -35,10 +69,14 @@
           <p class="switch">Already have one? <a href="#" onclick="auth.toggle()">Sign in</a></p>
         </div>
       </div>
-
       <div id="authError" class="error-msg"></div>
     </div>
-  </div>
+  </section>
+
+  <footer class="landing-footer">
+    <p>Powered by <a href="https://emtypyie.in" target="_blank">emtypyie.cli</a></p>
+  </footer>
+
   <script src="/js/auth.js"></script>
   <script src="/js/main.js"></script>
 </body>

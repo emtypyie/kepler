@@ -23,6 +23,35 @@ nav .brand:hover { text-decoration: none; opacity: 0.9; }
 
 main { max-width: 900px; margin: 0 auto; padding: 2rem; }
 
+/* Landing */
+.landing nav { background: rgba(20,20,20,0.85); backdrop-filter: blur(8px); }
+.nav-actions { margin-left: auto; }
+.btn-lg { padding: 0.7rem 1.8rem; font-size: 1rem; }
+.hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+.hero-content { max-width: 600px; }
+.hero-icon { color: #4a90d9; margin-bottom: 1rem; }
+.hero h1 { font-size: 3.5rem; color: #fff; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.3rem; }
+.hero-sub { font-size: 1.2rem; color: #888; margin-bottom: 1rem; }
+.hero-desc { font-size: 1rem; color: #777; line-height: 1.7; margin-bottom: 2rem; }
+.hero-buttons { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+
+.section-title { text-align: center; font-size: 1.8rem; color: #fff; margin-bottom: 0.5rem; }
+.section-sub { text-align: center; color: #888; margin-bottom: 2rem; }
+
+.services-section { padding: 4rem 2rem; }
+.landing-services { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+.landing-card { background: rgba(40,40,40,0.9); padding: 2rem; border-radius: 10px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; text-align: center; }
+.landing-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+.landing-card .card-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+.landing-card h3 { color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem; }
+.landing-card p { color: #888; font-size: 0.9rem; line-height: 1.6; }
+
+.login-section { padding: 4rem 2rem 6rem; }
+.login-section .auth-box { margin: 0 auto; }
+
+.landing-footer { text-align: center; padding: 2rem; color: #555; font-size: 0.85rem; }
+.landing-footer a { color: #777; }
+
 .btn { display: inline-block; padding: 0.5rem 1.1rem; background: #4a90d9; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; transition: background 0.2s; }
 .btn:hover { background: #357abd; text-decoration: none; }
 .btn-danger { background: #d9534f; }
