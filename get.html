@@ -184,17 +184,16 @@ EOF</pre>
       .then(r => r.json())
       .then(data => {
         const ver = data.tag_name || 'v2.0.0';
-        const verNum = ver.replace(/^v/, '');
         document.querySelector('.dl-version').textContent = ver;
         for (const btn of ['dlWin', 'dlLin', 'dlMac']) {
           const el = document.getElementById(btn);
-          if (el) el.href = el.href.replace(/v[\d.]+(?=\-)/, verNum);
+          if (el) el.href = el.href.replace(/v[\d.]+(?=\-)/, ver);
         }
         document.querySelectorAll('[data-copy]').forEach(el => {
-          el.setAttribute('data-copy', el.getAttribute('data-copy').replace(/v[\d.]+(?=\-)/g, verNum));
+          el.setAttribute('data-copy', el.getAttribute('data-copy').replace(/v[\d.]+(?=\-)/g, ver));
         });
         document.querySelectorAll('.code-block pre').forEach(pre => {
-          pre.textContent = pre.textContent.replace(/v[\d.]+(?=\-)/g, verNum);
+          pre.textContent = pre.textContent.replace(/v[\d.]+(?=\-)/g, ver);
         });
       })
       .catch(() => {});
