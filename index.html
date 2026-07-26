@@ -22,7 +22,7 @@
   </nav>
 
   <aside class="guide-sidebar" id="guideSidebar">
-    <div class="guide-header">Getting Started</div>
+    <div class="guide-header">Workflow</div>
     <div class="guide-step">
       <div class="step-num">1</div>
       <div class="step-content">
@@ -114,22 +114,27 @@
         <p>A full-featured note-taking app with Markdown support. Write, organize, and search your notes locally.</p>
         <span class="card-link">Launch →</span>
       </div>
-      <div class="landing-card fade-up" onclick="location.href='/auth'">
+      <div class="landing-card fade-up">
         <div class="card-icon">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <h3>pyieOS</h3>
-        <p>System dashboard with CPU, memory, disk monitoring and a service manager. Keep an eye on your machine.</p>
-        <span class="card-link">Launch →</span>
+        <p>System dashboard with CPU, memory, disk monitoring and a service manager. Coming soon.</p>
+        <span class="card-badge">Soon</span>
       </div>
-      <div class="landing-card fade-up" onclick="location.href='/diary/get'">
-        <div class="card-icon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <h3>Backend Service</h3>
-        <p>Download and run the local backend server. Required for ediary and other services.</p>
-        <span class="card-link">Download →</span>
+    </div>
+
+  </section>
+
+  <section class="prereq">
+    <div class="prereq-box fade-up">
+      <div class="prereq-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       </div>
+      <div class="prereq-text">
+        <strong>Backend required.</strong> Download and run the server before using any service.
+      </div>
+      <a href="/diary/get" class="btn btn-sm">Download Backend</a>
     </div>
   </section>
 

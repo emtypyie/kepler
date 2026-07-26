@@ -31,20 +31,20 @@ main { max-width: 900px; margin: 0 auto; padding: 2rem; }
 .pixel-text { font-family: 'Press Start 2P', monospace; }
 
 /* Guide sidebar */
-.guide-sidebar { position: fixed; top: 50%; left: 0; transform: translateY(-50%); background: rgba(18,18,22,0.94); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); border-left: 2px solid #4a90d9; border-radius: 0 10px 10px 0; padding: 1.2rem 1rem 1.2rem 1rem; z-index: 90; min-width: 190px; transition: transform 0.3s ease, opacity 0.3s ease; box-shadow: 2px 0 20px rgba(0,0,0,0.3); }
+.guide-sidebar { position: fixed; top: 50%; left: 0; transform: translateY(-50%); background: rgba(18,18,22,0.94); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); border-left: 2px solid rgba(255,255,255,0.15); border-radius: 0 10px 10px 0; padding: 1.2rem 1rem 1.2rem 1rem; z-index: 90; min-width: 175px; transition: transform 0.3s ease, opacity 0.3s ease; box-shadow: 2px 0 20px rgba(0,0,0,0.3); }
 .guide-sidebar.collapsed { transform: translateY(-50%) translateX(-100%); opacity: 0; pointer-events: none; }
-.guide-header { color: #6ab0ff; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.guide-header { color: rgba(255,255,255,0.5); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .guide-step { display: flex; gap: 0.7rem; margin-bottom: 1.1rem; }
 .guide-step:last-child { margin-bottom: 0; }
-.step-num { width: 20px; height: 20px; background: transparent; color: #555; font-family: 'Courier New', monospace; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0; border: 1px solid #333; border-radius: 4px; }
-.guide-step.current .step-num { border-color: #4a90d9; color: #6ab0ff; }
-.step-title { color: #ccc; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; }
+.step-num { width: 20px; height: 20px; background: transparent; color: rgba(255,255,255,0.25); font-family: 'Courier New', monospace; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; }
+.guide-step.current .step-num { border-color: rgba(255,255,255,0.5); color: rgba(255,255,255,0.7); }
+.step-title { color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; }
 .guide-step.current .step-title { color: #fff; }
-.step-desc { color: #666; font-size: 0.7rem; line-height: 1.4; margin-top: 0.1rem; }
-.step-link { color: #888; font-size: 0.7rem; display: inline-block; margin-top: 0.2rem; border-bottom: 1px dashed #444; }
-.step-link:hover { color: #6ab0ff; border-bottom-color: #6ab0ff; text-decoration: none; }
-.guide-toggle { position: absolute; right: -22px; top: 50%; transform: translateY(-50%); width: 22px; height: 44px; border: 1px solid rgba(255,255,255,0.04); border-left: none; border-radius: 0 6px 6px 0; background: rgba(18,18,22,0.94); color: #555; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(12px); }
-.guide-toggle:hover { color: #aaa; border-color: rgba(255,255,255,0.08); }
+.step-desc { color: rgba(255,255,255,0.3); font-size: 0.7rem; line-height: 1.4; margin-top: 0.1rem; }
+.step-link { color: rgba(255,255,255,0.4); font-size: 0.7rem; display: inline-block; margin-top: 0.2rem; border-bottom: 1px dashed rgba(255,255,255,0.15); }
+.step-link:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.4); text-decoration: none; }
+.guide-toggle { position: absolute; right: -22px; top: 50%; transform: translateY(-50%); width: 22px; height: 44px; border: 1px solid rgba(255,255,255,0.04); border-left: none; border-radius: 0 6px 6px 0; background: rgba(18,18,22,0.94); color: rgba(255,255,255,0.3); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(12px); }
+.guide-toggle:hover { color: #fff; border-color: rgba(255,255,255,0.08); }
 
 .landing-nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(20,20,20,0.6); backdrop-filter: blur(12px); padding: 0.8rem 2rem; display: flex; align-items: center; z-index: 100; transition: background 0.3s; }
 .landing-nav .brand { font-size: 1.1rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; }
@@ -94,7 +94,16 @@ main { max-width: 900px; margin: 0 auto; padding: 2rem; }
 .landing-card .card-icon { color: #4a90d9; margin-bottom: 0.8rem; display: flex; align-items: center; justify-content: center; }
 .landing-card h3 { color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem; }
 .landing-card p { color: #bbb; font-size: 0.9rem; line-height: 1.7; margin-bottom: 1rem; }
-.card-link { color: #6ab0ff; font-size: 0.9rem; font-weight: 500; }
+.card-link { color: rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 500; }
+.card-badge { display: inline-block; font-size: 0.7rem; color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 0.15rem 0.5rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+.prereq { padding: 0 2rem 3rem; position: relative; z-index: 1; }
+.prereq-box { max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.prereq-icon { color: rgba(255,255,255,0.2); flex-shrink: 0; }
+.prereq-text { flex: 1; color: rgba(255,255,255,0.5); font-size: 0.85rem; min-width: 200px; }
+.prereq-text strong { color: rgba(255,255,255,0.6); }
+.btn-sm { padding: 0.35rem 0.9rem; font-size: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); border-radius: 4px; }
+.btn-sm:hover { background: rgba(255,255,255,0.08); color: #fff; text-decoration: none; }
 
 .cta { padding: 4rem 2rem 6rem; position: relative; z-index: 1; }
 .cta-box { background: rgba(40,40,40,0.85); backdrop-filter: blur(8px); max-width: 550px; margin: 0 auto; padding: 3rem; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.08); }
