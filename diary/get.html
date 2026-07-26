@@ -19,32 +19,44 @@
     <h1 class="page-title">Download Kepler Backend</h1>
     <p class="subtitle">Run the backend locally to use ediary, pyieOS, and all Kepler services.</p>
 
-    <div class="setup-section">
-      <h2>Prerequisites</h2>
-      <ul>
-        <li><strong>Node.js</strong> v18 or later — <a href="https://nodejs.org" target="_blank">Download</a></li>
-        <li><strong>npm</strong> (ships with Node.js)</li>
-      </ul>
+    <div class="download-hero">
+      <div class="download-card-main">
+        <div class="dl-version" id="dlVersion">v2.0.0</div>
+        <a class="btn btn-lg btn-primary download-btn" id="dlBtn" href="https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Latest
+        </a>
+        <p class="dl-sub">Windows · Linux · macOS — 27 KB</p>
+      </div>
     </div>
 
     <div class="setup-section">
-      <h2>Quick Start</h2>
+      <h2>Quick Install (Windows)</h2>
+      <p>Download <code>setup.bat</code> from the repo, double-click, and it handles everything:</p>
+      <pre class="setup-code">curl -L -o setup.bat https://raw.githubusercontent.com/emtypyie/kepler/master/setup.bat
+setup.bat</pre>
+      <p class="setup-note">The installer checks for Node.js, downloads the latest backend, installs deps, and starts the server.</p>
+    </div>
+
+    <div class="setup-section">
+      <h2>Manual Setup</h2>
       <div class="setup-tabs">
         <div class="setup-tab">
           <h3>Windows</h3>
-          <pre class="setup-code">git clone https://github.com/emtypyie/kepler.git
-cd kepler/backend
+          <pre class="setup-code">curl -L -o kepler-backend.zip ^
+  https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
+powershell Expand-Archive kepler-backend.zip -DestinationPath .
+cd kepler-backend
 npm install
 node server.js</pre>
-          <p class="setup-note">Then open <a href="https://kepler.emtypyie.in">kepler.emtypyie.in</a> in your browser.</p>
         </div>
         <div class="setup-tab">
           <h3>Linux / macOS</h3>
-          <pre class="setup-code">git clone https://github.com/emtypyie/kepler.git
-cd kepler/backend
+          <pre class="setup-code">curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
+unzip kepler-backend-v2.0.0.zip
+cd kepler-backend
 npm install
 node server.js</pre>
-          <p class="setup-note">Then open <a href="https://kepler.emtypyie.in">kepler.emtypyie.in</a> in your browser.</p>
         </div>
       </div>
     </div>
@@ -55,34 +67,48 @@ node server.js</pre>
       <div class="setup-tabs">
         <div class="setup-tab">
           <h3>Windows (PowerShell as Admin)</h3>
-          <pre class="setup-code">powershell -ExecutionPolicy Bypass -File backend\setup\windows.ps1</pre>
+          <pre class="setup-code">powershell -ExecutionPolicy Bypass -File setup\windows.ps1</pre>
           <h3 style="margin-top:1rem">Linux</h3>
-          <pre class="setup-code">chmod +x backend/setup/linux.sh
-sudo ./backend/setup/linux.sh</pre>
+          <pre class="setup-code">chmod +x setup/linux.sh
+sudo ./setup/linux.sh</pre>
           <h3 style="margin-top:1rem">macOS</h3>
-          <pre class="setup-code">chmod +x backend/setup/macos.sh
-./backend/setup/macos.sh</pre>
+          <pre class="setup-code">chmod +x setup/macos.sh
+./setup/macos.sh</pre>
         </div>
       </div>
     </div>
 
     <div class="setup-section">
-      <h2>Verify It's Running</h2>
-      <p>Once the server is running, check the health endpoint:</p>
+      <h2>Verify</h2>
+      <p>Once running, check the health endpoint:</p>
       <pre class="setup-code">curl http://localhost:41783/api/health</pre>
-      <p>Expected response:</p>
+      <p>Expected:</p>
       <pre class="setup-code">{"status":"ok","version":"2.0.0","port":41783,"services":["ediary","pyieos"]}</pre>
     </div>
 
     <div class="setup-section">
-      <h2>Available Services</h2>
+      <h2>Services</h2>
       <table class="service-table">
-        <tr><td>ediary</td><td>Note-taking app with Markdown support</td><td>Available now</td></tr>
-        <tr><td>pyieOS</td><td>System dashboard &amp; service manager</td><td>Coming soon</td></tr>
+        <tr><td>ediary</td><td>Note-taking app with Markdown</td><td>Available</td></tr>
+        <tr><td>pyieOS</td><td>System dashboard &amp; manager</td><td>Soon</td></tr>
       </table>
     </div>
   </main>
 
+  <script>
+    // Fetch latest version from GitHub
+    fetch('https://api.github.com/repos/emtypyie/kepler/releases/latest')
+      .then(r => r.json())
+      .then(data => {
+        const ver = data.tag_name || 'v2.0.0';
+        document.getElementById('dlVersion').textContent = ver;
+        const asset = data.assets && data.assets.find(a => a.name.includes('kepler-backend'));
+        if (asset) {
+          document.getElementById('dlBtn').href = asset.browser_download_url;
+        }
+      })
+      .catch(() => {});
+  </script>
   <script src="/js/auth.js"></script>
 </body>
 </html>

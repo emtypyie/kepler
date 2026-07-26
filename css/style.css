@@ -259,6 +259,11 @@ textarea { font-family: 'SFMono-Regular', Consolas, monospace; resize: vertical;
 .service-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: #bbb; font-size: 0.9rem; }
 .service-table td:first-child { color: #ddd; font-weight: 500; width: 120px; }
 .service-table td:last-child { color: #888; text-align: right; }
+.download-hero { text-align: center; padding: 2rem 0 3rem; }
+.download-card-main { display: inline-block; background: rgba(40,40,40,0.8); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2.5rem 3rem; }
+.dl-version { color: rgba(255,255,255,0.2); font-size: 0.85rem; font-family: 'Courier New', monospace; margin-bottom: 1rem; }
+.download-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 2rem; font-size: 1.05rem; }
+.dl-sub { color: #777; font-size: 0.85rem; margin-top: 0.8rem; }
 
 @media (max-width: 600px) {
   main { padding: 1rem; }
