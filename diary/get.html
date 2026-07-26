@@ -38,20 +38,18 @@
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Windows</span>
-            <span class="dl-shell">powershell</span>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -fsSL https://kepler.emtypyie.in/curler/ps1 | powershell -c -">Copy</button>
           </div>
           <div class="code-block">
-            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
             <pre>curl -fsSL https://kepler.emtypyie.in/curler/ps1 | powershell -c -</pre>
           </div>
         </div>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Linux / macOS</span>
-            <span class="dl-shell">bash</span>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -fsSL https://kepler.emtypyie.in/curler | bash">Copy</button>
           </div>
           <div class="code-block">
-            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
             <pre>curl -fsSL https://kepler.emtypyie.in/curler | bash</pre>
           </div>
         </div>
@@ -64,10 +62,14 @@
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Windows</span>
-            <span class="dl-shell">powershell</span>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -L -o kepler-backend.zip ^
+  https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
+powershell Expand-Archive kepler-backend.zip -DestinationPath .
+cd kepler-backend
+npm install
+node server.js">Copy</button>
           </div>
           <div class="code-block">
-            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
             <pre>curl -L -o kepler-backend.zip ^
   https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
 powershell Expand-Archive kepler-backend.zip -DestinationPath .
@@ -79,10 +81,13 @@ node server.js</pre>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Linux / macOS</span>
-            <span class="dl-shell">bash</span>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
+unzip kepler-backend-v2.0.0.zip
+cd kepler-backend
+npm install
+node server.js">Copy</button>
           </div>
           <div class="code-block">
-            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
             <pre>curl -LO https://github.com/emtypyie/kepler/releases/latest/download/kepler-backend-v2.0.0.zip
 unzip kepler-backend-v2.0.0.zip
 cd kepler-backend
@@ -100,30 +105,27 @@ node server.js</pre>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Windows</span>
-            <span class="dl-shell">powershell (admin)</span>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="powershell -ExecutionPolicy Bypass -File setup\windows.ps1">Copy</button>
           </div>
           <div class="code-block">
-            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
             <pre>powershell -ExecutionPolicy Bypass -File setup\windows.ps1</pre>
           </div>
         </div>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Linux</span>
-            <span class="dl-shell">bash</span>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="sudo ./setup/linux.sh">Copy</button>
           </div>
           <div class="code-block">
-            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
             <pre>sudo ./setup/linux.sh</pre>
           </div>
         </div>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">macOS</span>
-            <span class="dl-shell">bash</span>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="./setup/macos.sh">Copy</button>
           </div>
           <div class="code-block">
-            <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
             <pre>./setup/macos.sh</pre>
           </div>
         </div>
@@ -134,12 +136,12 @@ node server.js</pre>
       <h2>Verify Installation</h2>
       <p class="dl-note">Once the server is running, confirm it works:</p>
       <div class="code-block code-block--wide">
-        <button class="code-copy" onclick="copyCode(this)" aria-label="Copy command">Copy</button>
         <pre>curl http://localhost:41783/api/health</pre>
+        <button class="code-copy code-copy--inset" onclick="copyCode(this)" data-copy="curl http://localhost:41783/api/health">Copy</button>
       </div>
       <div class="code-block code-block--wide code-block--out">
-        <button class="code-copy" onclick="copyCode(this)" aria-label="Copy output">Copy</button>
         <pre>{"status":"ok","version":"2.0.0","port":41783,"services":["ediary","pyieos"]}</pre>
+        <button class="code-copy code-copy--inset" onclick="copyCode(this)" data-copy="{&quot;status&quot;:&quot;ok&quot;,&quot;version&quot;:&quot;2.0.0&quot;,&quot;port&quot;:41783,&quot;services&quot;:[&quot;ediary&quot;,&quot;pyieos&quot;]}">Copy</button>
       </div>
     </section>
 
@@ -154,9 +156,7 @@ node server.js</pre>
 
   <script>
     function copyCode(btn) {
-      const pre = btn.nextElementSibling;
-      const text = pre.textContent.trim();
-      navigator.clipboard.writeText(text).then(() => {
+      navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(() => {
         btn.textContent = 'Copied';
         btn.classList.add('copied');
         setTimeout(() => {
@@ -177,6 +177,12 @@ node server.js</pre>
           pre.innerHTML = pre.innerHTML.replace(/kepler-backend-v[\d.]+\.zip/g, () => {
             return asset ? asset.name : 'kepler-backend-v2.0.0.zip';
           });
+        });
+        document.querySelectorAll('[data-copy]').forEach(btn => {
+          const text = btn.getAttribute('data-copy');
+          btn.setAttribute('data-copy', text.replace(/kepler-backend-v[\d.]+\.zip/g, () => {
+            return asset ? asset.name : 'kepler-backend-v2.0.0.zip';
+          }));
         });
       })
       .catch(() => {});
