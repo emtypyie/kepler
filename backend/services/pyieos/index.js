@@ -1,10 +1,10 @@
 const os = require('os');
 const { execSync } = require('child_process');
 const { requireAuth } = require('../../core/auth');
-
-const STARTUP_DIR = path.join(__dirname, '..', '..', 'autostart');
 const fs = require('fs');
 const path = require('path');
+
+const STARTUP_DIR = path.join(__dirname, '..', '..', 'autostart');
 
 function getSystemInfo() {
   const totalMem = os.totalmem();

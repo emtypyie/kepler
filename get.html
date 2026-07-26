@@ -105,28 +105,28 @@ node server.js</pre>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Windows</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="powershell -ExecutionPolicy Bypass -File setup\windows.ps1">Copy</button>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="powershell -ExecutionPolicy Bypass -File &quot;$env:USERPROFILE\.kepler\backend\setup\windows.ps1&quot;">Copy</button>
           </div>
           <div class="code-block">
-            <pre>powershell -ExecutionPolicy Bypass -File setup\windows.ps1</pre>
+            <pre>powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\.kepler\backend\setup\windows.ps1"</pre>
           </div>
         </div>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">Linux</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="sudo ./setup/linux.sh">Copy</button>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="sudo ~/.kepler/backend/setup/linux.sh">Copy</button>
           </div>
           <div class="code-block">
-            <pre>sudo ./setup/linux.sh</pre>
+            <pre>sudo ~/.kepler/backend/setup/linux.sh</pre>
           </div>
         </div>
         <div class="dl-panel">
           <div class="dl-panel-header">
             <span class="dl-os">macOS</span>
-            <button class="code-copy" onclick="copyCode(this)" data-copy="./setup/macos.sh">Copy</button>
+            <button class="code-copy" onclick="copyCode(this)" data-copy="~/.kepler/backend/setup/macos.sh">Copy</button>
           </div>
           <div class="code-block">
-            <pre>./setup/macos.sh</pre>
+            <pre>~/.kepler/backend/setup/macos.sh</pre>
           </div>
         </div>
       </div>
