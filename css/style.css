@@ -30,24 +30,6 @@ main { max-width: 900px; margin: 0 auto; padding: 2rem; }
 
 .pixel-text { font-family: 'Press Start 2P', monospace; }
 
-/* Guide sidebar */
-.guide-sidebar { position: fixed; top: 50%; left: 0; transform: translateY(-50%); background: rgba(15,15,18,0.7); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.06); border-left: 2px solid rgba(255,255,255,0.12); border-radius: 0 12px 12px 0; padding: 1.4rem 1.2rem 1.4rem 1rem; z-index: 90; min-width: 180px; transition: transform 0.3s ease, opacity 0.3s ease; box-shadow: 4px 0 30px rgba(0,0,0,0.4); }
-.guide-sidebar.collapsed { transform: translateY(-50%) translateX(-100%); opacity: 0; pointer-events: none; }
-.guide-toggle { position: fixed; top: 50%; width: 26px; height: 50px; border: 1px solid rgba(255,255,255,0.06); border-left: 2px solid rgba(255,255,255,0.12); border-radius: 0 8px 8px 0; background: rgba(15,15,18,0.7); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); color: rgba(255,255,255,0.5); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 91; transition: left 0.3s ease, opacity 0.2s; box-shadow: 2px 0 12px rgba(0,0,0,0.3); }
-.guide-toggle:hover { color: #fff; border-color: rgba(255,255,255,0.15); background: rgba(25,25,30,0.8); }
-.guide-header { color: rgba(255,255,255,0.5); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.guide-step { display: flex; gap: 0.7rem; margin-bottom: 1.1rem; }
-.guide-step:last-child { margin-bottom: 0; }
-.step-num { width: 20px; height: 20px; background: transparent; color: rgba(255,255,255,0.25); font-family: 'Courier New', monospace; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; }
-.guide-step.current .step-num { border-color: rgba(255,255,255,0.5); color: rgba(255,255,255,0.7); }
-.step-title { color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; }
-.guide-step.current .step-title { color: #fff; }
-.step-desc { color: rgba(255,255,255,0.3); font-size: 0.7rem; line-height: 1.4; margin-top: 0.1rem; }
-.step-link { color: rgba(255,255,255,0.4); font-size: 0.7rem; display: inline-block; margin-top: 0.2rem; border-bottom: 1px dashed rgba(255,255,255,0.15); }
-.step-link:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.4); text-decoration: none; }
-.guide-toggle { position: fixed; top: 50%; left: 0; transform: translateY(-50%); width: 26px; height: 50px; border: 1px solid rgba(255,255,255,0.06); border-left: 2px solid rgba(255,255,255,0.12); border-radius: 0 8px 8px 0; background: rgba(15,15,18,0.7); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); color: rgba(255,255,255,0.5); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 91; transition: left 0.3s ease, opacity 0.2s; box-shadow: 2px 0 12px rgba(0,0,0,0.3); }
-.guide-toggle:hover { color: #fff; border-color: rgba(255,255,255,0.15); background: rgba(25,25,30,0.8); }
-
 .landing-nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(20,20,20,0.6); backdrop-filter: blur(12px); padding: 0.8rem 2rem; display: flex; align-items: center; z-index: 100; transition: background 0.3s; }
 .landing-nav .brand { font-size: 1.1rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; }
 .landing-nav .brand:hover { opacity: 0.9; text-decoration: none; }
