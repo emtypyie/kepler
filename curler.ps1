@@ -45,31 +45,35 @@ try {
 }
 
 Write-Host "==> Installing as background service..."
-# Run the setup script to register auto-start
-$setupScript = "$InstallDir\setup\windows.ps1"
-if (-not (Test-Path $setupScript)) {
-  # Extract setup from exe? For now just create it
-  Write-Host "  Setup script not found, creating scheduled task directly..."
-  
-  $taskName = "KeplerBackend"
-  $batPath = "$InstallDir\autostart\kepler.bat"
-  New-Item -ItemType Directory -Path (Split-Path $batPath -Parent) -Force | Out-Null
-  @"
+# Create VBScript wrapper that runs exe completely hidden
+$vbsPath = "$InstallDir\run-hidden.vbs"
+@"
+CreateObject("Wscript.Shell").Run """" & WScript.Arguments(0) & """", 0, False
+"@ | Out-File -FilePath $vbsPath -Encoding ASCII
+
+$taskName = "KeplerBackend"
+$batPath = "$InstallDir\autostart\kepler.bat"
+New-Item -ItemType Directory -Path (Split-Path $batPath -Parent) -Force | Out-Null
+@"
 @echo off
 cd /d "$InstallDir"
-"$InstallDir\kepler-backend.exe"
+cscript //nologo "$vbsPath" "$InstallDir\kepler-backend.exe"
 "@ | Out-File -FilePath $batPath -Encoding ASCII
-  
-  # Create scheduled task for current user on logon
-  schtasks /Create /SC ONLOGON /TN $taskName /TR "`"$batPath`"" /F 2>$null
-  Write-Host "  Scheduled task created: $taskName"
-} else {
-  & $setupScript
-}
 
-# Start the service now
+# Create scheduled task - runs hidden, at logon, with highest privileges
+schtasks /Create /SC ONLOGON /TN $taskName /TR "`"$batPath`"" /RL HIGHEST /F 2>$null
+# Set task to run hidden
+$task = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
+if ($task) {
+  $task.Settings.Hidden = $true
+  Set-ScheduledTask -TaskName $taskName -Settings $task.Settings -ErrorAction SilentlyContinue
+}
+Write-Host "  Scheduled task created (hidden): $taskName"
+
+# Start the service now (hidden)
 Write-Host "==> Starting Kepler..."
-Start-Process -FilePath "$InstallDir\kepler-backend.exe" -WindowStyle Hidden -WorkingDirectory $InstallDir
+$vbsPath = "$InstallDir\run-hidden.vbs"
+Start-Process -FilePath "cscript" -ArgumentList "//nologo", "`"$vbsPath`"", "`"$InstallDir\kepler-backend.exe`"" -WindowStyle Hidden -WorkingDirectory $InstallDir
 
 Write-Host ""
 Write-Host "============================================"
