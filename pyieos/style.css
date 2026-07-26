@@ -1,0 +1,39 @@
+.pyieos-main { max-width: 950px; margin: 0 auto; padding: 2rem; }
+.pyieos-header { margin-bottom: 2rem; }
+.pyieos-header h1 { color: #fff; font-size: 1.8rem; display: flex; align-items: center; gap: 0.6rem; }
+.pyieos-header p { color: #888; margin-top: 0.3rem; }
+
+.pyieos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.pyieos-card { background: rgba(40,40,40,0.8); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 1.5rem; text-align: center; }
+.pyieos-card .card-label { color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.pyieos-card .card-value { color: #fff; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
+.pyieos-card .card-detail { color: #999; font-size: 0.8rem; }
+#cardCpu .card-value { color: #4a90d9; }
+#cardMem .card-value { color: #e0a84c; }
+#cardDisk .card-value { color: #6b9e6b; }
+#cardUptime .card-value { color: #9b7bbd; }
+
+.pyieos-section { margin-bottom: 2.5rem; }
+.pyieos-section h2 { color: #ddd; font-size: 1.2rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+.sysinfo-table { background: rgba(40,40,40,0.6); border-radius: 8px; overflow: hidden; }
+.sysinfo-row { display: flex; justify-content: space-between; padding: 0.6rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.sysinfo-row:last-child { border-bottom: none; }
+.sysinfo-row span:first-child { color: #888; }
+.sysinfo-row span:last-child { color: #ccc; text-align: right; max-width: 60%; word-break: break-word; }
+
+.services-table { background: rgba(40,40,40,0.6); border-radius: 8px; overflow: hidden; }
+.services-table .loading { padding: 1rem; color: #888; text-align: center; }
+.service-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.service-row:last-child { border-bottom: none; }
+.service-name { color: #ccc; font-weight: 500; }
+.service-status { font-size: 0.85rem; padding: 0.15rem 0.5rem; border-radius: 4px; }
+.status-running, .status-configured, .status-loaded, .status-active { color: #6b9e6b; background: rgba(107,158,107,0.1); }
+.status-inactive, .status-unavailable, .status-not-loaded { color: #e0a84c; background: rgba(224,168,76,0.1); }
+
+.autostart-info p { color: #bbb; margin-bottom: 1rem; }
+.autostart-cmds { display: flex; flex-direction: column; gap: 1rem; }
+.cmd-block { background: rgba(30,30,30,0.8); border-radius: 8px; padding: 0.8rem 1rem; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+.cmd-label { color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; min-width: 120px; }
+.cmd-block code { flex: 1; color: #aaa; font-size: 0.8rem; background: rgba(0,0,0,0.3); padding: 0.3rem 0.6rem; border-radius: 4px; min-width: 200px; word-break: break-all; }
+.btn-small { padding: 0.3rem 0.6rem; font-size: 0.75rem; cursor: pointer; }

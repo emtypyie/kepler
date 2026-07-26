@@ -1,0 +1,16 @@
+{
+  "name": "kepler",
+  "version": "2.0.0",
+  "description": "Local service hub — ediary, pyieOS, and more",
+  "runtime": "node",
+  "entry": "backend/server.js",
+  "port": 41783,
+  "services": ["ediary", "pyieos"],
+  "autostart": {
+    "windows": "backend/setup/windows.ps1",
+    "linux": "backend/setup/linux.sh",
+    "macos": "backend/setup/macos.sh"
+  },
+  "repository": "https://github.com/emtypyie/kepler",
+  "website": "https://kepler.emtypyie.in"
+}

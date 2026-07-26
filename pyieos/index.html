@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pyieOS — Kepler</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/pyieos/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script>let _u;try{_u=JSON.parse(localStorage.getItem('kepler_user')||sessionStorage.getItem('kepler_user'))}catch{}if(!_u||!_u.token){location.href='/auth'}</script>
+</head>
+<body>
+  <nav>
+    <a href="https://kepler.emtypyie.in" class="brand"><svg class="brand-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9v3"/></svg> Kepler</a>
+    <span class="breadcrumb">pyieOS</span>
+    <div class="user-menu">
+      <div class="avatar" id="userAvatar" onclick="toggleMenu()">?</div>
+      <div class="dropdown" id="userDropdown">
+        <div class="dropdown-header" id="dropdownUser">User</div>
+        <a href="/dashboard" class="dropdown-item">Dashboard</a>
+        <a href="/edit-profile" class="dropdown-item">Edit Profile</a>
+        <a href="/settings" class="dropdown-item">Settings</a>
+        <div class="dropdown-divider"></div>
+        <a href="/" class="dropdown-item" onclick="auth.logout()">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pyieos-main">
+    <div class="pyieos-header">
+      <h1><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> pyieOS</h1>
+      <p>System dashboard & service manager</p>
+    </div>
+
+    <div class="pyieos-grid">
+      <div class="pyieos-card" id="cardCpu">
+        <div class="card-label">CPU</div>
+        <div class="card-value" id="cpuValue">—</div>
+        <div class="card-detail" id="cpuDetail"></div>
+      </div>
+      <div class="pyieos-card" id="cardMem">
+        <div class="card-label">Memory</div>
+        <div class="card-value" id="memValue">—</div>
+        <div class="card-detail" id="memDetail"></div>
+      </div>
+      <div class="pyieos-card" id="cardDisk">
+        <div class="card-label">Disk</div>
+        <div class="card-value" id="diskValue">—</div>
+        <div class="card-detail" id="diskDetail"></div>
+      </div>
+      <div class="pyieos-card" id="cardUptime">
+        <div class="card-label">Uptime</div>
+        <div class="card-value" id="uptimeValue">—</div>
+        <div class="card-detail" id="uptimeDetail"></div>
+      </div>
+    </div>
+
+    <div class="pyieos-section">
+      <h2>System Info</h2>
+      <div class="sysinfo-table" id="sysinfoTable"></div>
+    </div>
+
+    <div class="pyieos-section">
+      <h2>Services</h2>
+      <div class="services-table" id="servicesTable">
+        <p class="loading">Loading...</p>
+      </div>
+    </div>
+
+    <div class="pyieos-section">
+      <h2>Auto-Start Setup</h2>
+      <div class="autostart-info">
+        <p>Configure Kepler to start automatically when your system boots.</p>
+        <div class="autostart-cmds">
+          <div class="cmd-block">
+            <div class="cmd-label">Windows (PowerShell as Admin)</div>
+            <code>powershell -ExecutionPolicy Bypass -File backend\setup\windows.ps1</code>
+            <button class="btn btn-small" onclick="copyCmd(this)">Copy</button>
+          </div>
+          <div class="cmd-block">
+            <div class="cmd-label">Linux</div>
+            <code>chmod +x backend/setup/linux.sh && sudo ./backend/setup/linux.sh</code>
+            <button class="btn btn-small" onclick="copyCmd(this)">Copy</button>
+          </div>
+          <div class="cmd-block">
+            <div class="cmd-label">macOS</div>
+            <code>chmod +x backend/setup/macos.sh && ./backend/setup/macos.sh</code>
+            <button class="btn btn-small" onclick="copyCmd(this)">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/pyieos/dashboard.js"></script>
+</body>
+</html>
