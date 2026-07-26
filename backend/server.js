@@ -34,13 +34,25 @@ function makeToken() {
   return crypto.randomBytes(32).toString('hex');
 }
 
+function hashPassword(password) {
+  const salt = crypto.randomBytes(16).toString('hex');
+  const hash = crypto.scryptSync(password, salt, 64).toString('hex');
+  return `${salt}:${hash}`;
+}
+
+function verifyPassword(password, stored) {
+  const [salt, hash] = stored.split(':');
+  const derived = crypto.scryptSync(password, salt, 64).toString('hex');
+  return hash === derived;
+}
+
 app.post('/api/auth/signup', (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) return res.status(400).json({ error: 'Username and password required' });
   const users = readUsers();
   if (users.find(u => u.username === username)) return res.status(409).json({ error: 'Username taken' });
   const token = makeToken();
-  users.push({ username, password, token, createdAt: Date.now() });
+  users.push({ username, password: hashPassword(password), token, createdAt: Date.now() });
   writeUsers(users);
   res.json({ username, token });
 });
@@ -48,7 +60,7 @@ app.post('/api/auth/signup', (req, res) => {
 app.post('/api/auth/login', (req, res) => {
   const { username, password } = req.body;
   const users = readUsers();
-  const user = users.find(u => u.username === username && u.password === password);
+  const user = users.find(u => u.username === username && verifyPassword(password, u.password));
   if (!user) return res.status(401).json({ error: 'Invalid credentials' });
   const token = makeToken();
   user.token = token;
@@ -71,8 +83,8 @@ app.put('/api/auth/password', (req, res) => {
   const users = readUsers();
   const user = users.find(u => u.token === token);
   if (!user) return res.status(401).json({ error: 'Unauthorized' });
-  if (user.password !== currentPassword) return res.status(400).json({ error: 'Current password incorrect' });
-  user.password = newPassword;
+  if (!verifyPassword(currentPassword, user.password)) return res.status(400).json({ error: 'Current password incorrect' });
+  user.password = hashPassword(newPassword);
   writeUsers(users);
   res.json({ ok: true });
 });
