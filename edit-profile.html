@@ -6,6 +6,7 @@
   <title>Edit Profile — Kepler</title>
   <link rel="icon" type="image/svg+xml" href="/logo.svg">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
 </head>
 <body>
   <nav>
@@ -34,7 +35,6 @@
       <div class="setting-row">
         <div class="avatar-preview" id="avatarPreview">U</div>
         <input type="file" id="avatarInput" accept="image/*" style="flex:1">
-        <button class="btn" onclick="uploadAvatar()">Upload</button>
       </div>
     </section>
 
@@ -60,6 +60,20 @@
     <div id="profileMsg" class="error-msg"></div>
   </main>
 
+  <div class="modal-overlay" id="cropModal" style="display:none">
+    <div class="modal-box">
+      <h2>Crop Avatar</h2>
+      <div class="crop-container">
+        <img id="cropImage" style="max-width:100%">
+      </div>
+      <div class="modal-actions">
+        <button class="btn" onclick="commitCrop()">Commit</button>
+        <button class="btn btn-secondary" onclick="closeCrop()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
   <script src="/js/auth.js"></script>
   <script src="/js/profile.js"></script>
 </body>

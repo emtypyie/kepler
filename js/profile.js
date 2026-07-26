@@ -1,5 +1,6 @@
 let profileData = {};
 let newUsername = '';
+let cropper = null;
 
 auth.redirect();
 
@@ -21,27 +22,52 @@ async function loadProfile() {
   } catch {}
 }
 
-async function uploadAvatar() {
-  const file = document.getElementById('avatarInput').files[0];
+document.getElementById('avatarInput').addEventListener('change', function() {
+  const file = this.files[0];
   if (!file) return;
-  const user = auth.getUser();
-  if (!user) return;
   const reader = new FileReader();
-  reader.onload = async () => {
-    const dataUrl = reader.result;
-    try {
-      const res = await fetch(`${getBackendUrl()}/api/auth/profile`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json', 'Authorization': user.token },
-        body: JSON.stringify({ avatar: dataUrl }),
-      });
-      const data = await res.json();
-      if (data.error) return showMsg(data.error);
-      document.getElementById('avatarPreview').innerHTML = `<img src="${dataUrl}" class="avatar-img">`;
-      showMsg('Avatar updated!', 'success');
-    } catch { showMsg('Backend unreachable'); }
+  reader.onload = (e) => {
+    document.getElementById('cropImage').src = e.target.result;
+    document.getElementById('cropModal').style.display = 'flex';
+    if (cropper) cropper.destroy();
+    cropper = new Cropper(document.getElementById('cropImage'), {
+      aspectRatio: 1,
+      viewMode: 1,
+      dragMode: 'move',
+      autoCropArea: 1,
+      cropBoxMovable: true,
+      cropBoxResizable: true,
+      zoomable: true,
+      scalable: true,
+    });
   };
   reader.readAsDataURL(file);
+  this.value = '';
+});
+
+function closeCrop() {
+  document.getElementById('cropModal').style.display = 'none';
+  if (cropper) { cropper.destroy(); cropper = null; }
+}
+
+async function commitCrop() {
+  if (!cropper) return;
+  const canvas = cropper.getCroppedCanvas({ width: 256, height: 256 });
+  const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
+  const user = auth.getUser();
+  if (!user) return;
+  try {
+    const res = await fetch(`${getBackendUrl()}/api/auth/profile`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'Authorization': user.token },
+      body: JSON.stringify({ avatar: dataUrl }),
+    });
+    const data = await res.json();
+    if (data.error) return showMsg(data.error);
+    document.getElementById('avatarPreview').innerHTML = `<img src="${dataUrl}" class="avatar-img">`;
+    showMsg('Avatar updated!', 'success');
+  } catch { showMsg('Backend unreachable'); }
+  closeCrop();
 }
 
 async function saveEmail() {
