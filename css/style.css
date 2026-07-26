@@ -263,8 +263,7 @@ textarea { font-family: 'SFMono-Regular', Consolas, monospace; resize: vertical;
 .dl-shell { color: rgba(255,255,255,0.2); font-size: 0.75rem; font-family: 'Courier New', monospace; }
 
 .code-block { position: relative; }
-.code-block pre { background: #131314; color: #e8e8e8; padding: 1rem 3.5rem 1rem 1rem; margin: 0; font-size: 0.82rem; line-height: 1.6; overflow-x: auto; white-space: pre; font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace; }
-.code-block--wide pre { white-space: pre-wrap; word-break: break-all; }
+.code-block pre { background: #131314; color: #e8e8e8; padding: 1rem 3.5rem 1rem 1rem; margin: 0; font-size: 0.82rem; line-height: 1.6; white-space: pre-wrap; word-break: break-all; font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace; }
 .code-block--out pre { color: rgba(255,255,255,0.4); }
 .code-copy { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.3); font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 4px; cursor: pointer; transition: all 0.15s; font-family: inherit; white-space: nowrap; }
 .code-copy:hover { background: rgba(255,255,255,0.08); color: #ccc; border-color: rgba(255,255,255,0.1); }
