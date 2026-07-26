@@ -2,7 +2,7 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
+  "rewrites": [
     { "source": "/auth", "destination": "/auth.html" },
     { "source": "/privacy", "destination": "/privacy.html" }
   ]
