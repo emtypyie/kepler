@@ -24,7 +24,7 @@ const auth = {
   redirect() {
     const user = this.getUser();
     const path = window.location.pathname;
-    const publicPaths = ['/', '/index.html', '/auth', '/privacy'];
+    const publicPaths = ['/', '/index.html', '/auth', '/privacy', '/get'];
     const isPublic = publicPaths.includes(path) || path.startsWith('/diary/');
     if (!user && !isPublic) {
       window.location.href = '/';
