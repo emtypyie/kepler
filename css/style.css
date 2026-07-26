@@ -38,7 +38,7 @@ main { max-width: 900px; margin: 0 auto; padding: 2rem; }
 .guide-sidebar:not(.collapsed) ~ .guide-toggle { left: 177px; }
 .guide-sidebar:not(.collapsed) ~ .guide-toggle .show-icon { display: none; }
 .guide-sidebar:not(.collapsed) ~ .guide-toggle .hide-icon { display: inline; }
-.guide-sidebar.collapsed ~ .guide-toggle { left: 0; }
+.guide-sidebar.collapsed ~ .guide-toggle { left: -10px; }
 .guide-sidebar.collapsed ~ .guide-toggle .show-icon { display: inline; }
 .guide-sidebar.collapsed ~ .guide-toggle .hide-icon { display: none; }
 .guide-header { color: rgba(255,255,255,0.5); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
