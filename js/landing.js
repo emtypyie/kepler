@@ -28,8 +28,5 @@ window.addEventListener('scroll', () => {
 
 // Guide sidebar toggle
 function toggleGuide() {
-  const sidebar = document.getElementById('guideSidebar');
-  const btn = document.getElementById('guideToggle');
-  sidebar.classList.toggle('collapsed');
-  btn.textContent = sidebar.classList.contains('collapsed') ? '›' : '‹';
+  document.getElementById('guideSidebar').classList.toggle('collapsed');
 }
