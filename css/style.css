@@ -78,10 +78,11 @@ main { max-width: 900px; margin: 0 auto; padding: 2rem; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
 /* Sections */
-.stats { padding: 3rem 2rem 5rem; position: relative; z-index: 1; display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
-.stat { text-align: center; }
-.stat-num { font-size: 2.5rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
-.stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2rem; }
+.stats { padding: 2rem 2rem 5rem; position: relative; z-index: 1; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; max-width: 800px; margin: 0 auto; }
+.stat-card { background: rgba(30,30,35,0.6); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; padding: 1.2rem 1.5rem 1.2rem 1.2rem; display: flex; align-items: center; gap: 0.8rem; min-width: 160px; flex: 1; }
+.stat-icon { color: rgba(255,255,255,0.15); flex-shrink: 0; }
+.stat-num { font-size: 1.3rem; font-weight: 700; color: #eee; letter-spacing: -0.02em; line-height: 1; }
+.stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 0.15rem; }
 
 .features, .services-landing, .how-it-works { padding: 7rem 2rem; max-width: 1050px; margin: 0 auto; position: relative; z-index: 1; }
 .section-label { text-align: center; color: #6ab0ff; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; font-weight: 600; }
