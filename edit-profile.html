@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ediary — Download</title>
+  <title>Edit Profile — Kepler</title>
   <link rel="icon" type="image/svg+xml" href="/logo.svg">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <nav>
     <a href="https://emtypyie.in" class="brand"><svg class="brand-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2"/><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/><path d="M12 9l0 3"/></svg> Kepler</a>
-    <span class="breadcrumb">/ ediary / Get</span>
+    <span class="breadcrumb">/ Edit Profile</span>
     <div class="user-menu">
       <div class="avatar" id="userAvatar" onclick="toggleMenu()">U</div>
       <div class="dropdown" id="userDropdown">
@@ -27,37 +27,40 @@
   </nav>
 
   <main>
-    <h1 class="page-title">Download ediary Backend</h1>
-    <p class="subtitle">Run the backend locally to use ediary on your machine.</p>
+    <h1 class="page-title">Edit Profile</h1>
 
-    <div class="download-grid">
-      <div class="download-card">
-        <h2>🐧 Linux / Unix</h2>
-        <p>Version 1.0.0</p>
-        <a href="#" class="btn" onclick="alert('Download started: ediary-linux-v1.0.0.tar.gz')">Download .tar.gz</a>
-        <pre class="setup-code">tar -xzf ediary-linux-v1.0.0.tar.gz
-cd ediary-backend
-chmod +x setup.sh
-./setup.sh</pre>
+    <section class="settings-section">
+      <h2>Avatar</h2>
+      <div class="setting-row">
+        <div class="avatar-preview" id="avatarPreview">U</div>
+        <input type="file" id="avatarInput" accept="image/*" style="flex:1">
+        <button class="btn" onclick="uploadAvatar()">Upload</button>
       </div>
-      <div class="download-card">
-        <h2>🪟 Windows</h2>
-        <p>Version 1.0.0</p>
-        <a href="#" class="btn" onclick="alert('Download started: ediary-win-v1.0.0.zip')">Download .zip</a>
-        <pre class="setup-code">Expand-Archive ediary-win-v1.0.0.zip -DestinationPath .
-cd ediary-backend
-.\setup.bat</pre>
-      </div>
-    </div>
+    </section>
 
-    <div class="version-list">
-      <h2>All Versions</h2>
-      <ul>
-        <li>v1.0.0 — <a href="#">Linux</a> · <a href="#">Windows</a> (latest)</li>
-      </ul>
-    </div>
+    <section class="settings-section">
+      <h2>Email</h2>
+      <div class="setting-row">
+        <input type="email" id="profileEmail" placeholder="your@email.com">
+        <button class="btn" onclick="saveEmail()">Save</button>
+      </div>
+    </section>
+
+    <section class="settings-section">
+      <h2>Username</h2>
+      <div class="setting-row">
+        <input type="text" id="profileUsername" placeholder="Username">
+        <button class="btn" onclick="checkUsername()">Check</button>
+      </div>
+      <div id="usernameStatus" class="field-msg"></div>
+      <div id="usernameSuggestions" class="suggestions"></div>
+      <button class="btn" onclick="saveUsername()" id="saveUsernameBtn" style="display:none">Save Username</button>
+    </section>
+
+    <div id="profileMsg" class="error-msg"></div>
   </main>
 
   <script src="/js/auth.js"></script>
+  <script src="/js/profile.js"></script>
 </body>
 </html>

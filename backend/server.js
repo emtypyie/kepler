@@ -12,7 +12,7 @@ const USERS_FILE = path.join(__dirname, 'users.json');
 if (!fs.existsSync(NOTES_DIR)) fs.mkdirSync(NOTES_DIR, { recursive: true });
 if (!fs.existsSync(USERS_FILE)) fs.writeFileSync(USERS_FILE, '[]', 'utf-8');
 
-app.use(express.json());
+app.use(express.json({ limit: '5mb' }));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
@@ -87,6 +87,59 @@ app.put('/api/auth/password', (req, res) => {
   user.password = hashPassword(newPassword);
   writeUsers(users);
   res.json({ ok: true });
+});
+
+app.get('/api/auth/profile', (req, res) => {
+  const token = req.headers.authorization;
+  if (!token) return res.status(401).json({ error: 'No token' });
+  const users = readUsers();
+  const user = users.find(u => u.token === token);
+  if (!user) return res.status(401).json({ error: 'Invalid token' });
+  res.json({ username: user.username, email: user.email || '', avatar: user.avatar || '' });
+});
+
+app.put('/api/auth/profile', (req, res) => {
+  const token = req.headers.authorization;
+  if (!token) return res.status(401).json({ error: 'No token' });
+  const users = readUsers();
+  const user = users.find(u => u.token === token);
+  if (!user) return res.status(401).json({ error: 'Invalid token' });
+  const { username, email, avatar } = req.body;
+  if (username !== undefined) {
+    if (users.find(u => u.username === username && u.username !== user.username)) {
+      return res.status(409).json({ error: 'Username taken' });
+    }
+    user.username = username;
+    delete user.token;
+    writeUsers(users);
+    return res.json({ username, token: '', changed: true });
+  }
+  if (email !== undefined) user.email = email;
+  if (avatar !== undefined) user.avatar = avatar;
+  writeUsers(users);
+  res.json({ ok: true });
+});
+
+app.get('/api/auth/check-username', (req, res) => {
+  const { username } = req.query;
+  if (!username) return res.status(400).json({ error: 'Username required' });
+  const users = readUsers();
+  const available = !users.find(u => u.username === username);
+  const suggestions = [];
+  if (!available) {
+    const vowels = 'aeiou';
+    const consonants = 'bcdfghjklmnpqrstvwxyz';
+    for (let i = 0; i < 5; i++) {
+      let s = '';
+      const len = 7 + Math.floor(Math.random() * 4);
+      for (let j = 0; j < len; j++) {
+        s += j % 2 === 0 ? consonants[Math.floor(Math.random() * consonants.length)] : vowels[Math.floor(Math.random() * vowels.length)];
+      }
+      if (!users.find(u => u.username === s)) suggestions.push(s);
+      if (suggestions.length >= 3) break;
+    }
+  }
+  res.json({ available, suggestions });
 });
 
 app.delete('/api/auth/account', (req, res) => {

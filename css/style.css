@@ -5,7 +5,9 @@ a:hover { text-decoration: underline; }
 
 nav { background: rgba(30,30,30,0.92); color: #fff; padding: 0.75rem 2rem; display: flex; align-items: center; gap: 1rem; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px); }
 nav .brand { font-size: 1.1rem; font-weight: 700; color: #fff; text-decoration: none; }
-nav > span:not(.brand) { margin-right: auto; }
+nav .brand:hover { text-decoration: none; opacity: 0.9; }
+.breadcrumb { color: #888; font-size: 0.95rem; margin-right: auto; }
+.breadcrumb::before { color: #555; }
 
 .user-menu { position: relative; display: flex; align-items: center; margin-left: auto; }
 .avatar { width: 34px; height: 34px; border-radius: 50%; background: #4a90d9; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.95rem; cursor: pointer; user-select: none; transition: opacity 0.2s; }
@@ -49,6 +51,15 @@ textarea { font-family: 'SFMono-Regular', Consolas, monospace; resize: vertical;
 .checkbox-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: #aaa; margin-bottom: 0.5rem; }
 .checkbox-row input { width: auto; margin: 0; }
 .error-msg { color: #f44336; font-size: 0.9rem; margin-top: 0.5rem; text-align: center; min-height: 1.2rem; }
+.avatar-preview { width: 64px; height: 64px; border-radius: 50%; background: #4a90d9; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.5rem; overflow: hidden; flex-shrink: 0; }
+.avatar-preview .avatar-img { width: 100%; height: 100%; object-fit: cover; }
+.field-msg { font-size: 0.85rem; margin-top: 0.3rem; min-height: 1.2rem; }
+.field-msg .available { color: #4caf50; }
+.field-msg .taken { color: #f44336; }
+.suggestions { margin-top: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.suggest-label { color: #888; font-size: 0.85rem; margin-right: 0.3rem; }
+.suggestion { display: inline-block; padding: 0.25rem 0.6rem; background: rgba(74,144,217,0.15); color: #6ab0ff; border-radius: 4px; font-size: 0.85rem; cursor: pointer; transition: background 0.15s; }
+.suggestion:hover { background: rgba(74,144,217,0.3); }
 
 /* Dashboard */
 .service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
