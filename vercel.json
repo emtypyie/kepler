@@ -7,6 +7,5 @@
     { "source": "/curler", "destination": "/curler.sh" },
     { "source": "/curler/ps1", "destination": "/curler.ps1" },
     { "source": "/curler/sh", "destination": "/curler.sh" }
-  ],
-  "errorPage": "/404.html"
+  ]
 }
