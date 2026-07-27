@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="404 — Page not found. Kepler by Emtypyie.">
+  <title>404 — Kepler</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: #0a0a0a;
+      color: #e8e8e8;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+      max-width: 500px;
+    }
+    .pixel-text { font-family: 'Press Start 2P', monospace; }
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+    }
+    h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 6rem;
+      font-weight: 400;
+      color: #4c5fd6;
+      margin: 0 0 1rem;
+      line-height: 1;
+    }
+    .msg {
+      font-size: 1.2rem;
+      color: #aaa;
+      margin-bottom: 2rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: #4c5fd6;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .btn:hover { background: #3d4dc0; }
+    .btn svg { width: 18px; height: 18px; }
+    .links {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .links a {
+      color: #666;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .links a:hover { color: #4c5fd6; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="#4c5fd6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/>
+      <path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/>
+      <path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/>
+      <path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"/>
+      <path d="M12 9v3"/>
+    </svg>
+    <h1 class="pixel-text">404</h1>
+    <p class="msg">Page not found. The service you're looking for doesn't exist.</p>
+    <a href="/" class="btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Kepler
+    </a>
+    <div class="links">
+      <a href="https://kepler.emtypyie.in">Main Site</a>
+      <a href="https://wiki.emtypyie.in/devlogs/kepler">Documentation</a>
+      <a href="https://github.com/emtypyie/kepler">GitHub</a>
+    </div>
+  </div>
+</body>
+</html>
