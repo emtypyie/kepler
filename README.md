@@ -1,4 +1,4 @@
-# Kepler
+# Kepler@2.0.7
 
 **Kepler by Emtypyie** — Make your homeserver better. A local-first service hub that runs ediary, pyieOS, and more on your own machine. No cloud, no tracking, full control.
 
